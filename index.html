@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="countdown-banner">
+        <div class="container">
+            <p><strong>RESTAM APENAS <span id="voucher-count">25</span> VOUCHERS!</strong> Garanta já o seu antes que acabe!</p>
+        </div>
+    </div>
     <header class="main-header">
         <div class="container">
             <a href="#" aria-label="Página Inicial da Raza Óticas">
@@ -24,15 +29,10 @@
 
     <main>
         <section id="hero" class="hero-section">
-            <div class="container hero-content">
-                <div class="hero-text">
-                    <h1>2 Óculos Completos por <br><span>10x de R$ 29,90</span></h1>
-                    <p class="subtitle">Qualidade e estilo que cabem no seu bolso. Não perca essa chance única de renovar seus óculos!</p>
-                    <a href="#capture-form" class="cta-button">RETIRAR MEU VOUCHER!</a>
-                </div>
-                <div class="hero-image">
-                    <img src="https://placehold.co/500x500/ff8c00/FFFFFF?text=Modelo+Sorrindo" alt="Modelo sorrindo e usando óculos da Raza Óticas">
-                </div>
+            <div class="container hero-content-refactored">
+                <h1>2 Óculos Completos por <span>10x de R$ 29,90</span></h1>
+                <p class="subtitle">Aproveite nossa promoção exclusiva e renove seus óculos com a qualidade e o estilo que só a Raza Óticas oferece. Não perca!</p>
+                <a href="#capture-form" class="cta-button">RETIRAR MEU VOUCHER!</a>
             </div>
         </section>
 
@@ -49,6 +49,40 @@
                 <div class="proof-item">
                     <h3>+10.000</h3>
                     <p>óculos vendidos todo o mês</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials-section">
+            <div class="container">
+                <h2 class="section-title">O que nossos clientes dizem</h2>
+                <div class="testimonial-carousel">
+                    <div class="testimonial-slide active-slide">
+                        <img src="https://placehold.co/100x100/E67E00/white?text=Cliente" alt="Foto do Cliente 1" class="testimonial-photo">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"Ótimo atendimento, super atenciosos, com bastante opções de escolha. Recomendo demais!"</p>
+                            <h4 class="testimonial-author">Laís Ferreira dos Santos</h4>
+                            <div class="testimonial-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="https://placehold.co/100x100/E67E00/white?text=Cliente" alt="Foto do Cliente 2" class="testimonial-photo">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"O atendimento foi excelente, a equipe de vocês está de parabéns. Com certeza voltarei!"</p>
+                            <h4 class="testimonial-author">Rogério Jonas</h4>
+                            <div class="testimonial-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="https://placehold.co/100x100/E67E00/white?text=Cliente" alt="Foto do Cliente 3" class="testimonial-photo">
+                        <div class="testimonial-content">
+                            <p class="testimonial-text">"A doutora é uma graça e o vendedor atendeu super bem. Virei cliente fiel!"</p>
+                            <h4 class="testimonial-author">Úrica Matos Magalhães</h4>
+                            <div class="testimonial-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <button class="carousel-control prev" aria-label="Depoimento Anterior">&lt;</button>
+                    <button class="carousel-control next" aria-label="Próximo Depoimento">&gt;</button>
                 </div>
             </div>
         </section>
@@ -85,18 +119,15 @@
             <div class="container">
                 <h2>Conheça Nossas Lojas</h2>
                 <p class="section-subtitle">Espaços modernos e aconchegantes, pensados para oferecer a melhor experiência.</p>
-                <div class="stores-gallery-grid">
-                    <div class="store-image-wrapper">
-                        <img src="https://placehold.co/600x400/eeeeee/333333?text=Loja+1" alt="Foto da loja 1 da Raza Óticas">
+                <div class="interactive-gallery">
+                    <div class="main-image-container">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+1" alt="Foto da loja 1 da Raza Óticas" id="main-store-image">
                     </div>
-                    <div class="store-image-wrapper">
-                        <img src="https://placehold.co/600x400/eeeeee/333333?text=Loja+2" alt="Foto da loja 2 da Raza Óticas">
-                    </div>
-                    <div class="store-image-wrapper">
-                        <img src="https://placehold.co/600x400/eeeeee/333333?text=Loja+3" alt="Foto da loja 3 da Raza Óticas">
-                    </div>
-                    <div class="store-image-wrapper">
-                        <img src="https://placehold.co/600x400/eeeeee/333333?text=Loja+4" alt="Foto da loja 4 da Raza Óticas">
+                    <div class="thumbnail-grid">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+1" alt="Miniatura da loja 1" class="thumbnail active-thumbnail">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+2" alt="Miniatura da loja 2" class="thumbnail">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+3" alt="Miniatura da loja 3" class="thumbnail">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+4" alt="Miniatura da loja 4" class="thumbnail">
                     </div>
                 </div>
             </div>

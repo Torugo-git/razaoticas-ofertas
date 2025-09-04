@@ -29,4 +29,67 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // Lógica para o carrossel de depoimentos
+    const slides = document.querySelectorAll('.testimonial-slide');
+    if (slides.length > 0) {
+        const nextBtn = document.querySelector('.carousel-control.next');
+        const prevBtn = document.querySelector('.carousel-control.prev');
+        let currentSlide = 0;
+
+        const showSlide = (index) => {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active-slide');
+                if (i === index) {
+                    slide.classList.add('active-slide');
+                }
+            });
+        };
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        });
+
+        // Inicia o carrossel
+        showSlide(currentSlide);
+    }
+
+    // Lógica para a galeria de lojas interativa
+    const mainStoreImage = document.getElementById('main-store-image');
+    const thumbnails = document.querySelectorAll('.thumbnail');
+
+    if (mainStoreImage && thumbnails.length > 0) {
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                // Atualiza o src da imagem principal
+                mainStoreImage.src = this.src;
+
+                // Atualiza a classe ativa na miniatura
+                thumbnails.forEach(t => t.classList.remove('active-thumbnail'));
+                this.classList.add('active-thumbnail');
+            });
+        });
+    }
+
+    // Lógica para o banner de contagem
+    const voucherElement = document.getElementById('voucher-count');
+    if (voucherElement) {
+        let voucherCount = parseInt(voucherElement.textContent, 10);
+        const minVouchers = 5;
+
+        const updateVoucherCount = () => {
+            if (voucherCount > minVouchers) {
+                voucherCount--;
+                voucherElement.textContent = voucherCount;
+            }
+        };
+
+        // Diminui a cada 45 segundos
+        setInterval(updateVoucherCount, 45000);
+    }
 });

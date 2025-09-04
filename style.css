@@ -61,40 +61,59 @@ h1, h2, h3 {
     padding: 0 20px;
 }
 
-/* --- Seção de Herói --- */
+/* --- Seção de Herói (Refatorada) --- */
 .hero-section {
-    padding: 4rem 0;
-    background-color: var(--form-bg); /* Usando uma cor de fundo suave */
-}
-
-.hero-content {
+    position: relative;
+    padding: 6rem 0;
+    color: var(--color-white);
+    text-align: center;
+    background: url('https://placehold.co/1920x1080/555555/FFFFFF?text=Imagem+de+Fundo') no-repeat center center/cover;
+    min-height: 60vh;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 3rem;
+    justify-content: center;
 }
 
-.hero-text {
-    flex: 1;
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* Sobreposição escura */
+    z-index: 1;
 }
 
-.hero-text h1 {
-    font-size: 3.2rem;
-    font-weight: 800;
+.hero-content-refactored {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content-refactored h1 {
+    font-size: 3.5rem;
+    color: var(--color-white);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
     line-height: 1.2;
 }
 
-.hero-text h1 span {
-    color: var(--color-primary);
+.hero-content-refactored h1 span {
+    color: var(--color-primary-light);
     display: block;
-    font-size: 3.8rem;
+    font-size: 4.5rem;
 }
 
-.hero-text .subtitle {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    margin: 1.5rem 0;
-    max-width: 500px;
+.hero-content-refactored .subtitle {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    color: var(--text-light-1);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
 .cta-button {
@@ -117,19 +136,6 @@ h1, h2, h3 {
     transform: translateY(-3px);
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
     background-color: var(--color-primary-dark);
-}
-
-.hero-image {
-    flex: 1;
-    max-width: 420px;
-}
-
-.hero-image img {
-    border-radius: 50%;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 /* --- Seção de Prova Social --- */
@@ -162,6 +168,106 @@ h1, h2, h3 {
 .proof-item p {
     color: var(--text-secondary);
     font-size: 1rem;
+}
+
+/* --- Seção de Depoimentos --- */
+.testimonials-section {
+    padding: 4rem 0;
+    background-color: var(--color-white);
+}
+
+.testimonials-section .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.2rem;
+}
+
+.testimonial-carousel {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.testimonial-slide {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 4rem; /* Espaço para os botões */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.testimonial-slide.active-slide {
+    display: flex;
+}
+
+.testimonial-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 4px solid var(--color-primary-light);
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    max-width: 90%;
+    line-height: 1.6;
+}
+
+.testimonial-author {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.testimonial-rating {
+    color: var(--color-primary);
+    font-size: 1.3rem;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--form-border);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    z-index: 10;
+}
+
+.carousel-control:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.carousel-control.prev {
+    left: 0;
+}
+
+.carousel-control.next {
+    right: 0;
 }
 
 /* --- Seção Tipos de Lentes --- */
@@ -215,7 +321,7 @@ h1, h2, h3 {
     color: var(--text-secondary);
 }
 
-/* --- Seção Nossas Lojas --- */
+/* --- Seção Nossas Lojas (Interativa) --- */
 .stores-section {
     padding: 4rem 0;
 }
@@ -234,26 +340,46 @@ h1, h2, h3 {
     margin-right: auto;
 }
 
-.stores-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+.interactive-gallery {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.store-image-wrapper {
-    overflow: hidden;
+.main-image-container {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+#main-store-image {
+    max-width: 100%;
+    height: auto;
     border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
-.store-image-wrapper img {
+.thumbnail-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.thumbnail {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: border-color 0.3s, transform 0.3s;
+    opacity: 0.7;
 }
 
-.store-image-wrapper img:hover {
+.thumbnail:hover {
     transform: scale(1.05);
+    opacity: 1;
+}
+
+.thumbnail.active-thumbnail {
+    border-color: var(--color-primary);
+    opacity: 1;
 }
 
 /* --- Seção FAQ --- */
@@ -436,6 +562,20 @@ footer {
     font-weight: bold;
 }
 
+/* --- Banner de Contagem --- */
+.countdown-banner {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    text-align: center;
+    padding: 0.6rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.countdown-banner p {
+    margin: 0;
+}
+
 /* --- Estilos do Header --- */
 .main-header {
     padding: 1rem 0;
@@ -462,51 +602,60 @@ footer {
 
 /* Tablets e dispositivos menores (ex: iPads) */
 @media (max-width: 992px) {
-    .hero-text h1 {
-        font-size: 2.8rem;
+    .hero-content-refactored h1 {
+        font-size: 3rem;
     }
-    .hero-text h1 span {
-        font-size: 3.2rem;
-    }
-    .hero-content {
-        gap: 2rem;
+    .hero-content-refactored h1 span {
+        font-size: 4rem;
     }
 }
 
 
 /* Celulares */
 @media (max-width: 768px) {
-    h1, h2 {
-        font-size: 2rem;
+    h1, h2, .section-title {
+        font-size: 1.8rem;
     }
 
     .container {
         padding: 0 15px;
     }
 
+    /* Banner */
+    .countdown-banner {
+        font-size: 0.85rem;
+        padding: 0.5rem 10px;
+    }
+
     /* Hero */
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-        gap: 2.5rem;
-    }
-
-    .hero-text {
-        text-align: center;
-    }
-
-    .hero-text h1 {
+    .hero-content-refactored h1 {
         font-size: 2.2rem;
     }
 
-    .hero-text h1 span {
-        font-size: 2.8rem;
+    .hero-content-refactored h1 span {
+        font-size: 3rem;
     }
 
     /* Social Proof */
     .social-proof-content {
         flex-direction: column;
         gap: 2rem;
+    }
+
+    /* Testimonials */
+    .testimonial-carousel {
+        min-height: 360px;
+    }
+    .testimonial-slide {
+        padding: 0 1rem;
+    }
+    .carousel-control {
+        display: none; /* Ocultar botões no mobile */
+    }
+
+    /* Gallery */
+    .thumbnail-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     /* Form */
