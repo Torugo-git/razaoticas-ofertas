@@ -92,4 +92,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Diminui a cada 45 segundos
         setInterval(updateVoucherCount, 45000);
     }
+
+    // Lógica para o carrossel de marcas
+    const brandsCarousel = $(".brands-carousel-container");
+    if (brandsCarousel.length) {
+        brandsCarousel.swipe({
+            swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+                const track = $(this).find('.brands-carousel-track');
+                if (direction === 'left' || direction === 'right') {
+                    track.css('animation-play-state', 'paused');
+                    setTimeout(function() {
+                        track.css('animation-play-state', 'running');
+                    }, 3000); // Pausa por 3 segundos
+                }
+            },
+            threshold: 75 // Sensibilidade do swipe
+        });
+    }
 });
