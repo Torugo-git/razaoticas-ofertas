@@ -1,112 +1,66 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Lógica para o acordeão do FAQ
-    const faqDetails = document.querySelectorAll('.faq-item details');
-
-    faqDetails.forEach(details => {
-        details.addEventListener('toggle', event => {
-            // Se o item atual foi aberto, fecha todos os outros.
-            if (details.open) {
-                faqDetails.forEach(otherDetails => {
-                    if (otherDetails !== details) {
-                        otherDetails.removeAttribute('open');
-                    }
-                });
-            }
-        });
-    });
-
+$(document).ready(function() {
+    
     // Opcional: Lógica para o smooth scroll para âncoras
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        const targetId = $(this).attr('href');
+        const targetElement = $(targetId);
+        if (targetElement.length) {
+            $('html, body').animate({
+                scrollTop: targetElement.offset().top
+            }, 'smooth');
+        }
     });
-    // Lógica para o carrossel de depoimentos
-    const slides = document.querySelectorAll('.testimonial-slide');
-    if (slides.length > 0) {
-        const nextBtn = document.querySelector('.carousel-control.next');
-        const prevBtn = document.querySelector('.carousel-control.prev');
-        let currentSlide = 0;
-
-        const showSlide = (index) => {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active-slide');
-                if (i === index) {
-                    slide.classList.add('active-slide');
-                }
-            });
-        };
-
-        nextBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        });
-
-        prevBtn.addEventListener('click', () => {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        });
-
-        // Inicia o carrossel
-        showSlide(currentSlide);
-    }
 
     // Lógica para a galeria de lojas interativa
-    const mainStoreImage = document.getElementById('main-store-image');
-    const thumbnails = document.querySelectorAll('.thumbnail');
+    const mainStoreImage = $('#main-store-image');
+    const thumbnails = $('.thumbnail');
 
-    if (mainStoreImage && thumbnails.length > 0) {
-        thumbnails.forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                // Atualiza o src da imagem principal
-                mainStoreImage.src = this.src;
-
-                // Atualiza a classe ativa na miniatura
-                thumbnails.forEach(t => t.classList.remove('active-thumbnail'));
-                this.classList.add('active-thumbnail');
-            });
+    if (mainStoreImage.length && thumbnails.length) {
+        thumbnails.on('click', function() {
+            const newSrc = $(this).attr('src');
+            mainStoreImage.attr('src', newSrc);
+            
+            thumbnails.removeClass('active-thumbnail');
+            $(this).addClass('active-thumbnail');
         });
     }
 
     // Lógica para o banner de contagem
-    const voucherElement = document.getElementById('voucher-count');
-    if (voucherElement) {
-        let voucherCount = parseInt(voucherElement.textContent, 10);
+    const voucherElement = $('#voucher-count');
+    if (voucherElement.length) {
+        let voucherCount = parseInt(voucherElement.text(), 10);
         const minVouchers = 5;
 
         const updateVoucherCount = () => {
             if (voucherCount > minVouchers) {
                 voucherCount--;
-                voucherElement.textContent = voucherCount;
+                voucherElement.text(voucherCount);
             }
         };
-
-        // Diminui a cada 45 segundos
-        setInterval(updateVoucherCount, 45000);
+        setInterval(updateVoucherCount, 45000); // Diminui a cada 45 segundos
     }
 
-    // Lógica para o carrossel de marcas
-    const brandsCarousel = $(".brands-carousel-container");
-    if (brandsCarousel.length) {
-        brandsCarousel.swipe({
-            swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-                const track = $(this).find('.brands-carousel-track');
-                if (direction === 'left' || direction === 'right') {
-                    track.css('animation-play-state', 'paused');
-                    setTimeout(function() {
-                        track.css('animation-play-state', 'running');
-                    }, 3000); // Pausa por 3 segundos
-                }
-            },
-            threshold: 75 // Sensibilidade do swipe
-        });
-    }
+    // LÓGICA DO ACORDEÃO FAQ (Funcionará agora que o script incompatível foi removido)
+    $('.raza-faq-question').on('click', function() {
+        const currentItem = $(this).parent('.raza-faq-item');
+        const currentAnswer = currentItem.find('.raza-faq-answer');
+        
+        // Verifica se o item clicado já está ativo
+        const wasActive = currentItem.hasClass('active');
+
+        // Fecha todos os outros itens e remove a classe 'active'
+        // Anima o fechamento
+        $('.raza-faq-item').removeClass('active');
+        $('.raza-faq-answer').animate({'max-height': '0px'}, 300);
+        
+        // Se o item clicado não estava ativo, abre-o
+        if (!wasActive) {
+            currentItem.addClass('active');
+            // Anima a abertura definindo o max-height para a altura real do conteúdo
+            currentAnswer.animate({'max-height': currentAnswer.prop('scrollHeight') + 'px'}, 300);
+        }
+    });
+
 });
+

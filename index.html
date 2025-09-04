@@ -6,116 +6,262 @@
     <title>Raza Óticas - Ofertas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/3.13.1/modernizr.min.js"></script>
 </head>
 <body>
-    <div class="countdown-banner">
-        <div class="container">
-            <p><strong>RESTAM APENAS <span id="voucher-count">25</span> VOUCHERS!</strong> Garanta já o seu antes que acabe!</p>
+    <div class="countdown-banner sticky">
+        <div class="container banner-content">
+            <p><strong>RESTAM APENAS <span id="voucher-count">25</span> VOUCHERS DE DESCONTO PARA USAR NA LOJA!</strong> <span class="banner-chevrons">›››</span></p>
+            <a href="#capture-form" class="cta-button-banner">RETIRAR MEU VOUCHER!</a>
         </div>
     </div>
-    <header class="main-header">
-        <div class="container">
-            <a href="#" aria-label="Página Inicial da Raza Óticas">
-                <!-- O caminho para o logo pode precisar de ajuste. Usando o caminho fornecido. -->
-                <img src="assets/raza_logo.png" alt="Raza Óticas Logo" class="logo">
-            </a>
-            <nav class="main-nav">
-                <!-- A navegação pode ser adicionada aqui no futuro -->
-            </nav>
-        </div>
-    </header>
 
     <main>
+        <!-- SEÇÃO 1: HERÓI -->
         <section id="hero" class="hero-section">
+            <div class="hero-logo-container">
+                 <img src="assets/raza_logo.png" alt="Raza Óticas Logo" class="logo-hero">
+            </div>
             <div class="container hero-content-refactored">
                 <h1>2 Óculos Completos por <span>10x de R$ 29,90</span></h1>
-                <p class="subtitle">Aproveite nossa promoção exclusiva e renove seus óculos com a qualidade e o estilo que só a Raza Óticas oferece. Não perca!</p>
+                <div class="hero-benefits">
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        <span>Pronto em até 1h</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        <span>Garantia de 1 Ano</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        <span>Desconto Exclusivo</span>
+                    </div>
+                </div>
                 <a href="#capture-form" class="cta-button">RETIRAR MEU VOUCHER!</a>
             </div>
         </section>
 
+        <!-- SEÇÃO 2: PROVA SOCIAL -->
         <section id="social-proof" class="social-proof-section">
-            <div class="container social-proof-content">
-                <div class="proof-item">
-                    <h3>+1.000</h3>
-                    <p>modelos de armação</p>
-                </div>
-                <div class="proof-item">
-                    <h3>+5</h3>
-                    <p>lojas para melhor te atender</p>
-                </div>
-                <div class="proof-item">
-                    <h3>+10.000</h3>
-                    <p>óculos vendidos todo o mês</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="testimonials" class="testimonials-section">
             <div class="container">
-                <h2 class="section-title">O que nossos clientes dizem</h2>
-                <div class="testimonial-carousel">
-                    <div class="testimonial-slide active-slide">
-                        <img src="https://placehold.co/100x100/E67E00/white?text=Cliente" alt="Foto do Cliente 1" class="testimonial-photo">
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">"Ótimo atendimento, super atenciosos, com bastante opções de escolha. Recomendo demais!"</p>
-                            <h4 class="testimonial-author">Laís Ferreira dos Santos</h4>
-                            <div class="testimonial-rating">★★★★★</div>
-                        </div>
+                <div class="social-proof-content">
+                    <div class="proof-item">
+                        <h3>+1.000</h3>
+                        <p>modelos de armação</p>
                     </div>
-                    <div class="testimonial-slide">
-                        <img src="https://placehold.co/100x100/E67E00/white?text=Cliente" alt="Foto do Cliente 2" class="testimonial-photo">
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">"O atendimento foi excelente, a equipe de vocês está de parabéns. Com certeza voltarei!"</p>
-                            <h4 class="testimonial-author">Rogério Jonas</h4>
-                            <div class="testimonial-rating">★★★★★</div>
-                        </div>
+                    <div class="proof-item">
+                        <h3>+5</h3>
+                        <p>lojas para melhor te atender</p>
                     </div>
-                    <div class="testimonial-slide">
-                        <img src="https://placehold.co/100x100/E67E00/white?text=Cliente" alt="Foto do Cliente 3" class="testimonial-photo">
-                        <div class="testimonial-content">
-                            <p class="testimonial-text">"A doutora é uma graça e o vendedor atendeu super bem. Virei cliente fiel!"</p>
-                            <h4 class="testimonial-author">Úrica Matos Magalhães</h4>
-                            <div class="testimonial-rating">★★★★★</div>
-                        </div>
+                    <div class="proof-item">
+                        <h3>+10.000</h3>
+                        <p>óculos vendidos todo o mês</p>
                     </div>
-                    <button class="carousel-control prev" aria-label="Depoimento Anterior">&lt;</button>
-                    <button class="carousel-control next" aria-label="Próximo Depoimento">&gt;</button>
                 </div>
             </div>
         </section>
 
+        <!-- SEÇÃO 3: TIPOS DE LENTES -->
         <section id="lens-types" class="lens-types-section">
             <div class="container">
-                <h2>Soluções em lentes feitas sob medida para você!</h2>
-                <div class="lens-types-grid">
-                    <div class="lens-card">
-                        <img src="https://placehold.co/80x80/ff8c00/FFFFFF?text=Mono" alt="Ícone de Lente Monofocal">
-                        <h4>Lentes Monofocais</h4>
-                        <p>Corrigem a visão para uma única distância, seja para perto (hipermetropia) ou para longe (miopia).</p>
+                <h2>Soluções em lentes feitas <strong>sob medida para você!</strong></h2>
+                <div class="raza-lenses-container">
+                    <div class="raza-lens-item">
+                        <div class="raza-lens-icon-wrapper">
+                            <img src="assets/icons/raza-icone-monofocal.png" alt="Ícone de Lentes Monofocais">
+                        </div>
+                        <h4 class="raza-lens-title">Lentes Monofocais</h4>
+                        <p class="raza-lens-description">Para pessoas com <strong>hipermetropia, miopia ou astigmatismo</strong>, corrigem a visão para perto ou longe.</p>
                     </div>
-                    <div class="lens-card">
-                        <img src="https://placehold.co/80x80/ff8c00/FFFFFF?text=Multi" alt="Ícone de Lente Multifocal">
-                        <h4>Lentes Multifocais</h4>
-                        <p>Permitem visão nítida em todas as distâncias (perto, intermediário e longe) em um único óculos.</p>
+                    <div class="raza-lens-item">
+                        <div class="raza-lens-icon-wrapper">
+                            <img src="assets/icons/raza-icone-multifocal.png" alt="Ícone de Lentes Multifocais">
+                        </div>
+                        <h4 class="raza-lens-title">Lentes Multifocais</h4>
+                        <p class="raza-lens-description">Ajustam a visão para <strong>várias distâncias</strong>, perfeitas para uso diário sem precisar trocar de óculos.</p>
                     </div>
-                    <div class="lens-card">
-                        <img src="https://placehold.co/80x80/ff8c00/FFFFFF?text=Bi" alt="Ícone de Lente Bifocal">
-                        <h4>Lentes Bifocais</h4>
-                        <p>Possuem dois campos de visão, um para perto e outro para longe, com uma linha visível de separação.</p>
+                    <div class="raza-lens-item">
+                        <div class="raza-lens-icon-wrapper">
+                           <img src="assets/icons/raza-icone-bifocal.png" alt="Ícone de Lentes Bifocais">
+                        </div>
+                        <h4 class="raza-lens-title">Lentes Bifocais</h4>
+                        <p class="raza-lens-description">Dividem a mesma lente <strong>para perto e para longe</strong>, muito usadas por quem precisa de correção dupla.</p>
                     </div>
-                    <div class="lens-card">
-                        <img src="https://placehold.co/80x80/ff8c00/FFFFFF?text=Ocupa" alt="Ícone de Lente Ocupacional">
-                        <h4>Lentes Ocupacionais</h4>
-                        <p>Otimizadas para distâncias de trabalho, como a do computador e da mesa, reduzindo a fadiga visual.</p>
+                    <div class="raza-lens-item">
+                        <div class="raza-lens-icon-wrapper">
+                           <img src="assets/icons/raza-icone-ocupacional.png" alt="Ícone de Lentes Ocupacionais">
+                        </div>
+                        <h4 class="raza-lens-title">Lentes Ocupacionais</h4>
+                        <p class="raza-lens-description">Projetadas para <strong>tarefas específicas</strong>, como trabalho em escritório ou uso de computador ou para leitura.</p>
+                    </div>
+                </div>
+                <div class="section-cta-container">
+                    <a href="#capture-form" class="cta-button">RETIRAR MEU VOUCHER!</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: COMO FUNCIONA -->
+        <section id="how-it-works" class="how-it-works-section">
+            <div class="container">
+                <div class="how-it-works-content">
+                    <div class="how-it-works-text">
+                        <h2 class="section-title">Comprar seus óculos nunca foi tão fácil</h2>
+                        <p class="section-subtitle">Siga nossos 3 passos simples para ter uma nova visão de mundo.</p>
+                        <ul class="steps-list">
+                            <li><span>1</span> Escolha sua armação favorita entre mais de 1.000 modelos.</li>
+                            <li><span>2</span> Faça seu exame de vista gratuito com nossos especialistas.</li>
+                            <li><span>3</span> Receba seus óculos novos, com lentes de alta qualidade.</li>
+                        </ul>
+                        <a href="#capture-form" class="cta-button">Comece agora!</a>
+                    </div>
+                    <div class="how-it-works-animation">
+                        <!--
+                            JULES: Não foi possível baixar o arquivo de animação Lottie.
+                            Para adicionar a animação aqui, substitua este comentário pelo código abaixo,
+                            e troque 'URL_DA_SUA_ANIMACAO.json' pelo link do seu arquivo Lottie.
+                            <lottie-player src="URL_DA_SUA_ANIMACAO.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
+                        -->
+                        <div class="animation-placeholder">
+                            <p>Animação Virá Aqui</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SEÇÃO 5: NOSSAS LOJAS -->
+        <section id="stores" class="stores-section">
+            <div class="container">
+                <h2>Conheça Nossas Lojas</h2>
+                <p class="section-subtitle">Espaços modernos e aconchegantes, pensados para oferecer a melhor experiência.</p>
+                <div class="interactive-gallery">
+                    <div class="main-image-container">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+1" alt="Foto da loja 1 da Raza Óticas" id="main-store-image">
+                    </div>
+                    <div class="thumbnail-grid">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+1" alt="Miniatura da loja 1" class="thumbnail active-thumbnail">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+2" alt="Miniatura da loja 2" class="thumbnail">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+3" alt="Miniatura da loja 3" class="thumbnail">
+                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+4" alt="Miniatura da loja 4" class="thumbnail">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 6: FAQ -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2>Tire todas as suas dúvidas!</h2>
+                <div class="raza-faq-accordion">
+                    <!-- Item 1 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>As lentes que vocês oferecem já vêm com proteção contra luz azul?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Sim! A saúde dos seus olhos é nossa prioridade. Oferecemos lentes com os tratamentos essenciais, o que inclui o filtro de luz azul para o uso confortável de telas digitais, além da proteção UV 100% contra os raios solares.</p>
+                        </div>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>Posso levar uma receita de outro oftalmologista?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Com certeza! Aceitamos receitas de qualquer oftalmologista. Basta trazê-la a uma de nossas lojas que nossa equipe especializada irá te auxiliar na escolha das melhores lentes e armações para a sua necessidade.</p>
+                        </div>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>Em quanto tempo meus óculos ficam prontos?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Temos um laboratório próprio que nos permite agilizar a produção. Para lentes mais comuns de visão simples, conseguimos entregar seus óculos prontos em até 1 hora. Casos mais complexos podem levar alguns dias, mas sempre informamos o prazo exato no momento da compra.</p>
+                        </div>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>Quais são os sinais de que preciso trocar as lentes dos meus óculos?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Os principais indícios são dores de cabeça frequentes, visão embaçada, cansaço visual, dificuldade para focar ou se você precisa afastar ou aproximar objetos para conseguir ler. Se notar qualquer um desses sintomas, é o momento ideal para uma nova avaliação visual.</p>
+                        </div>
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>Vocês oferecem algum tipo de assistência ou ajuste após a compra?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Sim, oferecemos assistência completa e vitalícia. Se seus óculos precisarem de qualquer ajuste no encaixe, limpeza profissional ou pequenas manutenções, basta visitar uma de nossas lojas. Nossa equipe terá o maior prazer em ajudar, sem custo algum.</p>
+                        </div>
+                    </div>
+                    <!-- Item 6 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>É possível fazer meus óculos de sol com o meu grau?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Claro! Personalizamos seus óculos de sol com a sua graduação, unindo o estilo que você ama com a correção visual que você precisa para aproveitar os dias de sol com total segurança, conforto e nitidez.</p>
+                        </div>
+                    </div>
+                    <!-- Item 7 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>As lentes de vocês possuem tratamento antirreflexo?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Sim, trabalhamos com as melhores tecnologias de lentes antirreflexo do mercado. Elas são fundamentais pois reduzem os reflexos indesejados, melhoram a estética dos óculos e proporcionam uma visão muito mais nítida e confortável, especialmente à noite.</p>
+                        </div>
+                    </div>
+                    <!-- Item 8 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>Como posso escolher a armação ideal para o meu tipo de rosto?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Nossos consultores são especialistas em visagismo e estão preparados para te ajudar! Eles analisam o formato do seu rosto, seu estilo de vida e suas preferências pessoais para encontrar a armação perfeita, que harmonize com seus traços e valorize sua imagem.</p>
+                        </div>
+                    </div>
+                    <!-- Item 9 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>Quais são os tipos de lentes que a Raza Óticas trabalha?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Oferecemos uma gama completa de lentes para atender a todas as necessidades visuais: monofocais (para perto ou longe), bifocais, multifocais (para todas as distâncias) e ocupacionais (ideais para escritório). Nossos especialistas estão prontos para te ajudar a escolher a melhor opção.</p>
+                        </div>
+                    </div>
+                    <!-- Item 10 -->
+                    <div class="raza-faq-item">
+                        <div class="raza-faq-question">
+                            <h4>Como encontro a unidade da Raza Óticas mais perto de mim?</h4>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="raza-faq-answer">
+                            <p>Temos diversas unidades para sua maior conveniência. Você pode encontrar a lista completa com todos os endereços aqui no nosso site ou entrando em contato com nossa central de atendimento pelo WhatsApp.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SEÇÃO 7: CARROSSEL DE MARCAS -->
         <section id="brands-carousel" class="brands-section">
             <div class="container">
                 <h2 class="section-title">As Melhores Marcas Estão Aqui</h2>
@@ -144,105 +290,11 @@
             </div>
         </section>
 
-        <section id="how-it-works" class="how-it-works-section">
-            <div class="container">
-                <div class="how-it-works-content">
-                    <div class="how-it-works-text">
-                        <h2 class="section-title">Comprar seus óculos nunca foi tão fácil</h2>
-                        <p class="section-subtitle">Siga nossos 3 passos simples para ter uma nova visão de mundo.</p>
-                        <ul class="steps-list">
-                            <li><span>1</span> Escolha sua armação favorita entre mais de 1.000 modelos.</li>
-                            <li><span>2</span> Faça seu exame de vista gratuito com nossos especialistas.</li>
-                            <li><span>3</span> Receba seus óculos novos, com lentes de alta qualidade.</li>
-                        </ul>
-                        <a href="#capture-form" class="cta-button">Comece agora!</a>
-                    </div>
-                    <div class="how-it-works-animation">
-                        <!--
-                            JULES: Não foi possível baixar o arquivo de animação Lottie.
-                            Para adicionar a animação aqui, substitua este comentário pelo código abaixo,
-                            e troque 'URL_DA_SUA_ANIMACAO.json' pelo link do seu arquivo Lottie.
-
-                            <lottie-player src="URL_DA_SUA_ANIMACAO.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
-                        -->
-                        <div class="animation-placeholder">
-                            <p>Animação Virá Aqui</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="stores" class="stores-section">
-            <div class="container">
-                <h2>Conheça Nossas Lojas</h2>
-                <p class="section-subtitle">Espaços modernos e aconchegantes, pensados para oferecer a melhor experiência.</p>
-                <div class="interactive-gallery">
-                    <div class="main-image-container">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+1" alt="Foto da loja 1 da Raza Óticas" id="main-store-image">
-                    </div>
-                    <div class="thumbnail-grid">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+1" alt="Miniatura da loja 1" class="thumbnail active-thumbnail">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+2" alt="Miniatura da loja 2" class="thumbnail">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+3" alt="Miniatura da loja 3" class="thumbnail">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+4" alt="Miniatura da loja 4" class="thumbnail">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="faq" class="faq-section">
-            <div class="container">
-                <h2>Tire todas as suas dúvidas!</h2>
-                <div class="faq-accordion">
-                    <div class="faq-item">
-                        <details>
-                            <summary>Quais são os tipos de lentes disponíveis?</summary>
-                            <div class="faq-content">
-                                <p>Oferecemos uma gama completa de lentes para atender às suas necessidades: monofocais, bifocais, multifocais e ocupacionais. Nossos especialistas estão prontos para ajudar a escolher a melhor para você.</p>
-                            </div>
-                        </details>
-                    </div>
-                    <div class="faq-item">
-                        <details>
-                            <summary>Como escolher a armação ideal para meu rosto?</summary>
-                            <div class="faq-content">
-                                <p>Nossos consultores são treinados em visagismo e levarão em conta o formato do seu rosto, seu estilo de vida e suas preferências para encontrar a armação perfeita que harmonize com você.</p>
-                            </div>
-                        </details>
-                    </div>
-                    <div class="faq-item">
-                        <details>
-                            <summary>As lentes possuem proteção contra luz azul e UV?</summary>
-                            <div class="faq-content">
-                                <p>Sim, a saúde dos seus olhos é nossa prioridade. Oferecemos lentes com tratamentos essenciais, incluindo filtro de luz azul para telas digitais e proteção UV 100% contra os raios solares.</p>
-                            </div>
-                        </details>
-                    </div>
-                    <div class="faq-item">
-                        <details>
-                            <summary>É possível fazer óculos de sol com grau?</summary>
-                            <div class="faq-content">
-                                <p>Com certeza! Personalizamos seus óculos de sol com a sua graduação, unindo estilo e a correção visual que você precisa para aproveitar os dias de sol com total segurança e nitidez.</p>
-                            </div>
-                        </details>
-                    </div>
-                     <div class="faq-item">
-                        <details>
-                            <summary>Quanto tempo leva para os óculos ficarem prontos?</summary>
-                            <div class="faq-content">
-                                <p>O prazo pode variar dependendo da complexidade das lentes e tratamentos escolhidos. Lentes mais simples podem ficar prontas em poucas horas, enquanto as mais complexas podem levar alguns dias. Sempre informamos o prazo exato no momento da compra.</p>
-                            </div>
-                        </details>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <!-- SEÇÃO 8: FORMULÁRIO DE CAPTURA -->
         <section id="capture-form" class="capture-form-section">
             <div class="container">
-                <h2>Garanta seu voucher de desconto!</h2>
-                <p class="section-subtitle">Preencha o formulário abaixo para receber sua oferta exclusiva. É rápido, fácil e seguro!</p>
+                <h2>Aproveite agora mesmo as melhores ofertas!</h2>
+                <p class="section-subtitle">Complete o cadastro agora e receba um voucher de desconto para aproveitar nossas promoções incríveis. <strong>Simples, rápido e vantajoso!</strong></p>
                 <form action="#" method="POST" class="capture-form">
                     <div class="form-group">
                         <label for="unit">Escolha uma de nossas unidades!</label>
@@ -267,7 +319,7 @@
                         <label for="email">Seu melhor e-mail</label>
                         <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
                     </div>
-                    <button type="submit" class="cta-button form-submit-button">Garantir meu voucher!</button>
+                    <button type="submit" class="cta-button form-submit-button">GARANTIR MEU VOUCHER!</button>
                 </form>
             </div>
         </section>
@@ -309,8 +361,9 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="assets/js/jquery.touchSwipe.min.js"></script>
+   
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
+
