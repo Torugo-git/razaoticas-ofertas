@@ -1,64 +1,80 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', () => {
     
-    // Opcional: Lógica para o smooth scroll para âncoras
-    $('a[href^="#"]').on('click', function(e) {
-        e.preventDefault();
-        const targetId = $(this).attr('href');
-        const targetElement = $(targetId);
-        if (targetElement.length) {
-            $('html, body').animate({
-                scrollTop: targetElement.offset().top
-            }, 'smooth');
-        }
+    // Lógica para o smooth scroll para âncoras
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 
-    // Lógica para a galeria de lojas interativa
-    const mainStoreImage = $('#main-store-image');
-    const thumbnails = $('.thumbnail');
+    // --- NOVA LÓGICA PARA A GALERIA DE LOJAS ---
+    const mainStoreImage = document.getElementById('main-store-image');
+    const storeThumbnails = document.querySelectorAll('.store-thumbnail img');
+    const activeThumbnailWrapperClass = 'active-thumbnail-wrapper';
 
-    if (mainStoreImage.length && thumbnails.length) {
-        thumbnails.on('click', function() {
-            const newSrc = $(this).attr('src');
-            mainStoreImage.attr('src', newSrc);
-            
-            thumbnails.removeClass('active-thumbnail');
-            $(this).addClass('active-thumbnail');
+    if (mainStoreImage && storeThumbnails.length > 0) {
+        storeThumbnails.forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                // Efeito de fade na imagem principal para suavizar a troca
+                mainStoreImage.style.opacity = '0.5';
+
+                setTimeout(() => {
+                    mainStoreImage.src = this.src;
+                    mainStoreImage.style.opacity = '1';
+                }, 150);
+
+                // Remove a classe de destaque de todas as miniaturas
+                storeThumbnails.forEach(t => {
+                    t.classList.remove('active-thumbnail');
+                    t.parentElement.classList.remove(activeThumbnailWrapperClass);
+                });
+                
+                // Adiciona a classe de destaque na miniatura clicada
+                this.classList.add('active-thumbnail');
+                this.parentElement.classList.add(activeThumbnailWrapperClass);
+            });
         });
     }
 
     // Lógica para o banner de contagem
-    const voucherElement = $('#voucher-count');
-    if (voucherElement.length) {
-        let voucherCount = parseInt(voucherElement.text(), 10);
+    const voucherElement = document.getElementById('voucher-count');
+    if (voucherElement) {
+        let voucherCount = parseInt(voucherElement.textContent, 10);
         const minVouchers = 5;
 
         const updateVoucherCount = () => {
             if (voucherCount > minVouchers) {
                 voucherCount--;
-                voucherElement.text(voucherCount);
+                voucherElement.textContent = voucherCount;
             }
         };
-        setInterval(updateVoucherCount, 45000); // Diminui a cada 45 segundos
+
+        // Diminui a cada 45 segundos
+        setInterval(updateVoucherCount, 45000);
     }
 
-    // LÓGICA DO ACORDEÃO FAQ (Funcionará agora que o script incompatível foi removido)
+    // Lógica para o acordeão do FAQ com jQuery
     $('.raza-faq-question').on('click', function() {
-        const currentItem = $(this).parent('.raza-faq-item');
-        const currentAnswer = currentItem.find('.raza-faq-answer');
-        
-        // Verifica se o item clicado já está ativo
-        const wasActive = currentItem.hasClass('active');
+        const item = $(this).closest('.raza-faq-item');
+        const answer = item.find('.raza-faq-answer');
 
-        // Fecha todos os outros itens e remove a classe 'active'
-        // Anima o fechamento
-        $('.raza-faq-item').removeClass('active');
-        $('.raza-faq-answer').animate({'max-height': '0px'}, 300);
+        // Fecha outros itens abertos e remove a classe 'active'
+        $('.raza-faq-item').not(item).removeClass('active').find('.raza-faq-answer').css('max-height', '0px');
         
-        // Se o item clicado não estava ativo, abre-o
-        if (!wasActive) {
-            currentItem.addClass('active');
-            // Anima a abertura definindo o max-height para a altura real do conteúdo
-            currentAnswer.animate({'max-height': currentAnswer.prop('scrollHeight') + 'px'}, 300);
+        // Alterna (toggle) a classe e a altura do item clicado
+        item.toggleClass('active');
+        if (item.hasClass('active')) {
+            answer.css('max-height', answer.prop('scrollHeight') + 'px');
+        } else {
+            answer.css('max-height', '0px');
         }
     });
 
