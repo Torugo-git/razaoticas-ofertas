@@ -119,15 +119,7 @@
                         <a href="#capture-form" class="cta-button">Comece agora!</a>
                     </div>
                     <div class="how-it-works-animation">
-                        <!--
-                            JULES: Não foi possível baixar o arquivo de animação Lottie.
-                            Para adicionar a animação aqui, substitua este comentário pelo código abaixo,
-                            e troque 'URL_DA_SUA_ANIMACAO.json' pelo link do seu arquivo Lottie.
-                            <lottie-player src="URL_DA_SUA_ANIMACAO.json" background="transparent" speed="1" style="width: 100%; height: 100%;" loop autoplay></lottie-player>
-                        -->
-                        <div class="animation-placeholder">
-                            <p>Animação Virá Aqui</p>
-                        </div>
+                        <img src="assets/images/promo-como-funciona.jpg" alt="Promoção 2 óculos completos por 10x de R$29,90">
                     </div>
                 </div>
             </div>
@@ -138,17 +130,39 @@
             <div class="container">
                 <h2>Conheça Nossas Lojas</h2>
                 <p class="section-subtitle">Espaços modernos e aconchegantes, pensados para oferecer a melhor experiência.</p>
-                <div class="interactive-gallery">
-                    <div class="main-image-container">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+1" alt="Foto da loja 1 da Raza Óticas" id="main-store-image">
+                
+                <!-- Nova Galeria de Lojas -->
+                <div class="stores-gallery-container">
+                    <div class="main-store-image-wrapper">
+                        <img src="assets/images/foto-loja-1.jpg" alt="Foto da loja 1 da Raza Óticas" id="main-store-image">
                     </div>
-                    <div class="thumbnail-grid">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+1" alt="Miniatura da loja 1" class="thumbnail active-thumbnail">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+2" alt="Miniatura da loja 2" class="thumbnail">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+3" alt="Miniatura da loja 3" class="thumbnail">
-                        <img src="https://placehold.co/800x500/e8e8e8/333?text=Loja+4" alt="Miniatura da loja 4" class="thumbnail">
+                    <div class="store-thumbnails-wrapper">
+                        <div class="thumbnail-arrow-container">
+                            <button class="thumbnail-arrow prev" aria-label="Anterior">&#10094;</button>
+                        </div>
+                        <div class="thumbnails-container">
+                            <div class="thumbnail-track">
+                                <div class="store-thumbnail">
+                                    <img src="assets/images/foto-loja-1.jpg" alt="Miniatura da loja 1" class="active-thumbnail">
+                                </div>
+                                <div class="store-thumbnail">
+                                    <img src="assets/images/foto-loja-2.jpg" alt="Miniatura da loja 2">
+                                </div>
+                                <div class="store-thumbnail">
+                                    <img src="https://placehold.co/200x150/e8e8e8/333?text=Em+Breve" alt="Miniatura da loja 3">
+                                </div>
+                                <div class="store-thumbnail">
+                                    <img src="https://placehold.co/200x150/e8e8e8/333?text=Em+Breve" alt="Miniatura da loja 4">
+                                </div>
+                                <!-- Adicione mais thumbnails aqui se necessário -->
+                            </div>
+                        </div>
+                        <div class="thumbnail-arrow-container">
+                           <button class="thumbnail-arrow next" aria-label="Próximo">&#10095;</button>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
         
@@ -161,7 +175,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>As lentes que vocês oferecem já vêm com proteção contra luz azul?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Sim! A saúde dos seus olhos é nossa prioridade. Oferecemos lentes com os tratamentos essenciais, o que inclui o filtro de luz azul para o uso confortável de telas digitais, além da proteção UV 100% contra os raios solares.</p>
@@ -171,7 +185,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>Posso levar uma receita de outro oftalmologista?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Com certeza! Aceitamos receitas de qualquer oftalmologista. Basta trazê-la a uma de nossas lojas que nossa equipe especializada irá te auxiliar na escolha das melhores lentes e armações para a sua necessidade.</p>
@@ -181,7 +195,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>Em quanto tempo meus óculos ficam prontos?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Temos um laboratório próprio que nos permite agilizar a produção. Para lentes mais comuns de visão simples, conseguimos entregar seus óculos prontos em até 1 hora. Casos mais complexos podem levar alguns dias, mas sempre informamos o prazo exato no momento da compra.</p>
@@ -191,7 +205,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>Quais são os sinais de que preciso trocar as lentes dos meus óculos?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Os principais indícios são dores de cabeça frequentes, visão embaçada, cansaço visual, dificuldade para focar ou se você precisa afastar ou aproximar objetos para conseguir ler. Se notar qualquer um desses sintomas, é o momento ideal para uma nova avaliação visual.</p>
@@ -201,7 +215,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>Vocês oferecem algum tipo de assistência ou ajuste após a compra?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Sim, oferecemos assistência completa e vitalícia. Se seus óculos precisarem de qualquer ajuste no encaixe, limpeza profissional ou pequenas manutenções, basta visitar uma de nossas lojas. Nossa equipe terá o maior prazer em ajudar, sem custo algum.</p>
@@ -211,7 +225,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>É possível fazer meus óculos de sol com o meu grau?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Claro! Personalizamos seus óculos de sol com a sua graduação, unindo o estilo que você ama com a correção visual que você precisa para aproveitar os dias de sol com total segurança, conforto e nitidez.</p>
@@ -221,7 +235,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>As lentes de vocês possuem tratamento antirreflexo?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Sim, trabalhamos com as melhores tecnologias de lentes antirreflexo do mercado. Elas são fundamentais pois reduzem os reflexos indesejados, melhoram a estética dos óculos e proporcionam uma visão muito mais nítida e confortável, especialmente à noite.</p>
@@ -231,7 +245,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>Como posso escolher a armação ideal para o meu tipo de rosto?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Nossos consultores são especialistas em visagismo e estão preparados para te ajudar! Eles analisam o formato do seu rosto, seu estilo de vida e suas preferências pessoais para encontrar a armação perfeita, que harmonize com seus traços e valorize sua imagem.</p>
@@ -241,7 +255,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>Quais são os tipos de lentes que a Raza Óticas trabalha?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Oferecemos uma gama completa de lentes para atender a todas as necessidades visuais: monofocais (para perto ou longe), bifocais, multifocais (para todas as distâncias) e ocupacionais (ideais para escritório). Nossos especialistas estão prontos para te ajudar a escolher a melhor opção.</p>
@@ -251,7 +265,7 @@
                     <div class="raza-faq-item">
                         <div class="raza-faq-question">
                             <h4>Como encontro a unidade da Raza Óticas mais perto de mim?</h4>
-                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                         <div class="raza-faq-answer">
                             <p>Temos diversas unidades para sua maior conveniência. Você pode encontrar a lista completa com todos os endereços aqui no nosso site ou entrando em contato com nossa central de atendimento pelo WhatsApp.</p>
@@ -267,24 +281,24 @@
                 <h2 class="section-title">As Melhores Marcas Estão Aqui</h2>
                 <div class="brands-carousel-container">
                     <div class="brands-carousel-track">
-                        <!--
-                            JULES: Adicione os logos das marcas aqui.
-                            Para cada logo, use a seguinte estrutura:
-                            <div class="brand-logo"><img src="URL_DA_IMAGEM" alt="Nome da Marca"></div>
-                            Repita para ter pelo menos 12 logos no total para o efeito de loop funcionar.
-                        -->
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
-                        <div class="brand-logo-placeholder"></div>
+                        <!-- Marcas Originais -->
+                        <div class="brand-logo"><img src="assets/marcas/oakley.png" alt="Oakley"></div>
+                        <div class="brand-logo"><img src="assets/marcas/vogue.png" alt="Vogue Eyewear"></div>
+                        <div class="brand-logo"><img src="assets/marcas/carmim.png" alt="Carmim"></div>
+                        <div class="brand-logo"><img src="assets/marcas/ray-ban.png" alt="Ray-Ban"></div>
+                        <div class="brand-logo"><img src="assets/marcas/hb.png" alt="HB - Hot Buttered"></div>
+                        <div class="brand-logo"><img src="assets/marcas/ralph-lauren.png" alt="Ralph Lauren Eyewear"></div>
+                        <div class="brand-logo"><img src="assets/marcas/ana-hickmann.png" alt="Ana Hickmann Eyewear"></div>
+                        <div class="brand-logo"><img src="assets/marcas/armani-exchange.png" alt="Armani Exchange"></div>
+                        <!-- Marcas Duplicadas para Loop -->
+                        <div class="brand-logo"><img src="assets/marcas/oakley.png" alt="Oakley"></div>
+                        <div class="brand-logo"><img src="assets/marcas/vogue.png" alt="Vogue Eyewear"></div>
+                        <div class="brand-logo"><img src="assets/marcas/carmim.png" alt="Carmim"></div>
+                        <div class="brand-logo"><img src="assets/marcas/ray-ban.png" alt="Ray-Ban"></div>
+                        <div class="brand-logo"><img src="assets/marcas/hb.png" alt="HB - Hot Buttered"></div>
+                        <div class="brand-logo"><img src="assets/marcas/ralph-lauren.png" alt="Ralph Lauren Eyewear"></div>
+                        <div class="brand-logo"><img src="assets/marcas/ana-hickmann.png" alt="Ana Hickmann Eyewear"></div>
+                        <div class="brand-logo"><img src="assets/marcas/armani-exchange.png" alt="Armani Exchange"></div>
                     </div>
                 </div>
             </div>
@@ -292,35 +306,42 @@
 
         <!-- SEÇÃO 8: FORMULÁRIO DE CAPTURA -->
         <section id="capture-form" class="capture-form-section">
-            <div class="container">
-                <h2>Aproveite agora mesmo as melhores ofertas!</h2>
-                <p class="section-subtitle">Complete o cadastro agora e receba um voucher de desconto para aproveitar nossas promoções incríveis. <strong>Simples, rápido e vantajoso!</strong></p>
-                <form action="#" method="POST" class="capture-form">
-                    <div class="form-group">
-                        <label for="unit">Escolha uma de nossas unidades!</label>
-                        <select id="unit" name="unit" required>
-                            <option value="" disabled selected>Selecione a loja mais próxima</option>
-                            <option value="centro">Loja Centro</option>
-                            <option value="norte">Loja Bairro Norte</option>
-                            <option value="sul">Loja Bairro Sul</option>
-                            <option value="shopping">Loja Shopping</option>
-                            <option value="oeste">Loja Oeste</option>
-                        </select>
+            <div class="form-container-with-bg">
+                <div class="form-bg-left"></div>
+                <div class="container">
+                    <div class="form-content-wrapper">
+                        <h2>Aproveite agora mesmo as melhores ofertas!</h2>
+                        <p class="section-subtitle">Complete o cadastro agora e receba um voucher de desconto para aproveitar nossas promoções incríveis. <strong>Simples, rápido e vantajoso!</strong></p>
+                        
+                        <form action="#" method="POST" class="capture-form">
+                            <div class="form-group">
+                                <label for="unit">Escolha uma de nossas unidades!</label>
+                                <select id="unit" name="unit" required>
+                                    <option value="" disabled selected>Selecione a loja mais próxima</option>
+                                    <option value="centro">Loja Centro</option>
+                                    <option value="norte">Loja Bairro Norte</option>
+                                    <option value="sul">Loja Bairro Sul</option>
+                                    <option value="shopping">Loja Shopping</option>
+                                    <option value="oeste">Loja Oeste</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Nome e Sobrenome</label>
+                                <input type="text" id="name" name="name" placeholder="Digite seu nome completo" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Celular/WhatsApp</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Seu melhor e-mail</label>
+                                <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
+                            </div>
+                            <button type="submit" class="cta-button form-submit-button">GARANTIR MEU VOUCHER!</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="name">Nome e Sobrenome</label>
-                        <input type="text" id="name" name="name" placeholder="Digite seu nome completo" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Celular/WhatsApp</label>
-                        <input type="tel" id="phone" name="phone" placeholder="(XX) XXXXX-XXXX" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Seu melhor e-mail</label>
-                        <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
-                    </div>
-                    <button type="submit" class="cta-button form-submit-button">GARANTIR MEU VOUCHER!</button>
-                </form>
+                </div>
+                <div class="form-bg-right"></div>
             </div>
         </section>
     </main>
@@ -361,8 +382,6 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-   
-    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
