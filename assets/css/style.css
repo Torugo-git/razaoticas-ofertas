@@ -68,7 +68,7 @@ h1, h2, h3 {
     padding: 8rem 0 6rem; /* Aumentado padding superior para dar espaço ao logo */
     color: var(--color-white);
     text-align: center;
-    background: url('https://placehold.co/1920x1080/555555/FFFFFF?text=Imagem+de+Fundo') no-repeat center center/cover;
+    background: url('../images/hero-background.jpg') no-repeat center 25%/cover; /* Posição da imagem ajustada */
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -82,7 +82,7 @@ h1, h2, h3 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.55); /* Sobreposição escura */
+    background: rgba(0, 0, 0, 0.65); /* Sobreposição escura ligeiramente mais forte */
     z-index: 1;
 }
 
@@ -280,7 +280,7 @@ h1, h2, h3 {
     margin-top: 3rem;
 }
 
-/* --- Seção Nossas Lojas (Interativa) --- */
+/* --- Seção Nossas Lojas (Novo Carrossel) --- */
 .stores-section {
     padding: 4rem 0;
     background-color: var(--form-bg);
@@ -300,46 +300,98 @@ h1, h2, h3 {
     margin-right: auto;
 }
 
-.interactive-gallery {
+.stores-gallery-container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-.main-image-container {
+.main-store-image-wrapper {
     margin-bottom: 1.5rem;
-    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    line-height: 0; /* Remove espaço extra abaixo da imagem */
+    aspect-ratio: 4 / 3; /* Proporção da imagem principal */
 }
 
 #main-store-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    transition: opacity 0.3s ease-in-out;
 }
 
-.thumbnail-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+.store-thumbnails-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 1rem;
 }
 
-.thumbnail {
-    width: 100%;
-    border-radius: 8px;
+.thumbnails-container {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.thumbnail-track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.5s ease;
+}
+
+.store-thumbnail {
+    flex-shrink: 0;
+    width: calc(25% - 0.75rem); /* 4 thumbnails com gap */
     cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    line-height: 0;
     border: 3px solid transparent;
-    transition: border-color 0.3s, transform 0.3s;
-    opacity: 0.7;
+    transition: border-color 0.3s;
 }
 
-.thumbnail:hover {
+.store-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.store-thumbnail:hover img {
+    opacity: 1;
     transform: scale(1.05);
-    opacity: 1;
 }
 
-.thumbnail.active-thumbnail {
-    border-color: var(--color-primary);
+.store-thumbnail img.active-thumbnail {
     opacity: 1;
+    border-color: var(--color-primary); /* Este estilo será aplicado na div pai */
+}
+.store-thumbnail.active-thumbnail-wrapper {
+    border-color: var(--color-primary);
+}
+
+
+.thumbnail-arrow {
+    background-color: var(--color-white);
+    border: 1px solid var(--form-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.thumbnail-arrow:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary-dark);
 }
 
 /* --- Seção FAQ (NOVO DESIGN) --- */
@@ -410,11 +462,37 @@ h1, h2, h3 {
 
 /* --- Seção Formulário de Captura --- */
 .capture-form-section {
-    padding: 4rem 0;
-    background-color: var(--form-bg);
+    padding: 0; /* Removido padding para as colunas preencherem a altura total */
+    background-color: #fdfdfd; 
 }
 
-.capture-form-section h2 {
+.form-container-with-bg {
+    display: flex;
+    max-width: 1400px; 
+    margin: 0 auto;
+}
+
+.form-bg-left, .form-bg-right {
+    flex: 1;
+    background: url('../images/form-background.jpg') no-repeat;
+    background-size: cover;
+}
+
+.form-bg-left {
+    background-position: right center;
+}
+.form-bg-right {
+    background-position: left center;
+}
+
+.form-content-wrapper {
+    padding: 4rem 2rem; /* Adicionado o padding vertical aqui */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.capture-form-section h2,
+.capture-form-section .section-subtitle {
     text-align: center;
 }
 
@@ -602,6 +680,12 @@ footer {
     .raza-lenses-container {
         grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas em tablets */
     }
+    .form-bg-left, .form-bg-right {
+        display: none; /* Esconde as imagens de fundo em ecrãs menores */
+    }
+    .form-content-wrapper {
+        padding: 4rem 0; /* Remove padding lateral em ecrãs menores */
+    }
 }
 
 
@@ -665,8 +749,8 @@ footer {
         gap: 2rem;
     }
 
-    .thumbnail-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .store-thumbnail {
+       width: calc(50% - 0.5rem); /* 2 thumbnails no mobile */
     }
 
     .capture-form {
@@ -706,25 +790,12 @@ footer {
 
 .brands-carousel-track {
     display: flex;
-    width: calc(180px * 12); /* (logo width + gap) * number of logos */
+    width: calc(180px * 16); /* Aumentado para 8 marcas x 2 */
     animation: scroll 40s linear infinite;
 }
 
 .brands-carousel-container:hover .brands-carousel-track {
     animation-play-state: paused;
-}
-
-.brand-logo-placeholder {
-    flex-shrink: 0;
-    width: 180px;
-    height: 60px;
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-    border-radius: 8px;
-    border: 2px dashed #ccc;
 }
 
 .brand-logo {
@@ -734,10 +805,15 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 80px; /* Altura adicionada para consistência */
 }
 
 .brand-logo img {
     max-width: 130px;
+    max-height: 50px; /* Altura máxima para os logos */
+    width: auto;
+    height: auto;
+    object-fit: contain;
     filter: grayscale(100%);
     opacity: 0.6;
     transition: filter 0.3s, opacity 0.3s, transform 0.3s;
@@ -754,7 +830,7 @@ footer {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-180px * 6)); /* Scroll by half the total width for seamless loop */
+        transform: translateX(calc(-180px * 8)); /* Scroll por 8 logos */
     }
 }
 
@@ -813,17 +889,18 @@ footer {
     font-size: 1rem;
 }
 
-.animation-placeholder {
+.how-it-works-animation {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.how-it-works-animation img {
+    max-width: 400px;
     width: 100%;
-    height: 300px;
-    background-color: #e0e0e0;
+    height: auto;
     border-radius: 10px;
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-    font-style: italic;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 @media (max-width: 768px) {
@@ -842,3 +919,4 @@ footer {
         margin-top: 2rem;
     }
 }
+
