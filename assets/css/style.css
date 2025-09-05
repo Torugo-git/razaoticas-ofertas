@@ -1,0 +1,922 @@
+:root {
+    --color-primary: #ff8c00;
+    --color-primary-light: #ffa500;
+    --color-primary-dark: #e67e00;
+    --color-dark-bg: #222222;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-light-1: #cccccc;
+    --text-light-2: #999999;
+    --color-white: #ffffff;
+    --form-bg: #f8f9fa;
+    --form-border: #dddddd;
+    --scrollbar-bg: #f1f1f1;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--color-white);
+    padding-top: 60px; /* Espaço para o banner fixo aumentado */
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+h1, h2, h3 {
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Seção de Herói (Refatorada) --- */
+.hero-section {
+    position: relative;
+    padding: 8rem 0 6rem; /* Aumentado padding superior para dar espaço ao logo */
+    color: var(--color-white);
+    text-align: center;
+    background: url('../images/hero-background.jpg') no-repeat center 25%/cover; /* Posição da imagem ajustada */
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65); /* Sobreposição escura ligeiramente mais forte */
+    z-index: 1;
+}
+
+.hero-logo-container {
+    position: absolute;
+    top: 40px; /* Espaçamento do topo */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.logo-hero {
+    height: 45px; /* Tamanho do logo no herói */
+    width: auto;
+}
+
+
+.hero-content-refactored {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content-refactored h1 {
+    font-size: 3.5rem;
+    color: var(--color-white);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    line-height: 1.2;
+    margin-bottom: 1.5rem; /* Espaço adicionado */
+}
+
+.hero-content-refactored h1 span {
+    color: var(--color-primary-light);
+    display: block;
+    font-size: 4.5rem;
+}
+
+/* --- Benefícios do Herói --- */
+.hero-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-light-1);
+    font-weight: 700;
+    flex-wrap: wrap;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.benefit-item svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--color-primary-light);
+}
+
+
+.cta-button {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 18px 35px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+    background-color: var(--color-primary-dark);
+}
+
+/* --- Seção de Prova Social --- */
+.social-proof-section {
+    padding: 4rem 0;
+    background-color: var(--form-bg);
+}
+
+.social-proof-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.proof-item {
+    min-width: 200px;
+}
+
+.proof-item h3 {
+    font-size: 2.8rem;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.proof-item p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* --- Seção Tipos de Lentes --- */
+.lens-types-section {
+    padding: 4rem 0;
+    background-color: var(--color-white);
+}
+
+.lens-types-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.lens-types-section h2 strong {
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.raza-lenses-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.raza-lens-item {
+    background: var(--color-white);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid var(--form-border);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.raza-lens-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-color: var(--color-primary);
+}
+
+.raza-lens-icon-wrapper {
+    margin: 0 auto 1.5rem;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.raza-lens-icon-wrapper img {
+    height: 28px;
+    width: auto;
+}
+
+.raza-lens-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    font-weight: 800;
+    color: var(--color-primary); 
+}
+
+.raza-lens-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.raza-lens-description strong {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+
+.section-cta-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* --- Seção Nossas Lojas (Novo Carrossel) --- */
+.stores-section {
+    padding: 4rem 0;
+    background-color: var(--form-bg);
+}
+
+.stores-section h2, .section-subtitle {
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: -1rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stores-gallery-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.main-store-image-wrapper {
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    line-height: 0; /* Remove espaço extra abaixo da imagem */
+    aspect-ratio: 4 / 3; /* Proporção da imagem principal */
+}
+
+#main-store-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.store-thumbnails-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.thumbnails-container {
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+.thumbnail-track {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.5s ease;
+}
+
+.store-thumbnail {
+    flex-shrink: 0;
+    width: calc(25% - 0.75rem); /* 4 thumbnails com gap */
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    line-height: 0;
+    border: 3px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.store-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.store-thumbnail:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.store-thumbnail img.active-thumbnail {
+    opacity: 1;
+    border-color: var(--color-primary); /* Este estilo será aplicado na div pai */
+}
+.store-thumbnail.active-thumbnail-wrapper {
+    border-color: var(--color-primary);
+}
+
+
+.thumbnail-arrow {
+    background-color: var(--color-white);
+    border: 1px solid var(--form-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.thumbnail-arrow:hover {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary-dark);
+}
+
+/* --- Seção FAQ (NOVO DESIGN) --- */
+.faq-section {
+    padding: 4rem 0;
+    background-color: var(--color-white);
+}
+
+.faq-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2.2rem;
+}
+
+.raza-faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.raza-faq-item {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    border: 1px solid var(--form-border);
+}
+
+.raza-faq-question {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+    color: var(--color-white);
+    padding: 1rem 1.5rem; /* Padding vertical ajustado */
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.raza-faq-question h4 {
+    margin: 0;
+    font-size: 1.05rem; /* Fonte ligeiramente ajustada */
+    font-weight: 700;
+    padding-right: 1rem; /* Espaço para o ícone */
+}
+
+.faq-chevron {
+    transition: transform 0.3s ease-in-out;
+    flex-shrink: 0; /* Impede que o ícone seja esmagado */
+}
+
+.raza-faq-item.active .faq-chevron {
+    transform: rotate(180deg);
+}
+
+.raza-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), padding 0.4s ease;
+    background-color: #fdfdfd;
+}
+
+.raza-faq-answer p {
+    padding: 1.5rem;
+    margin: 0;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* --- Seção Formulário de Captura --- */
+.capture-form-section {
+    padding: 0; /* Removido padding para as colunas preencherem a altura total */
+    background-color: #fdfdfd; 
+}
+
+.form-container-with-bg {
+    display: flex;
+    max-width: 1400px; 
+    margin: 0 auto;
+}
+
+.form-bg-left, .form-bg-right {
+    flex: 1;
+    background: url('../images/form-background.jpg') no-repeat;
+    background-size: cover;
+}
+
+.form-bg-left {
+    background-position: right center;
+}
+.form-bg-right {
+    background-position: left center;
+}
+
+.form-content-wrapper {
+    padding: 4rem 2rem; /* Adicionado o padding vertical aqui */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.capture-form-section h2,
+.capture-form-section .section-subtitle {
+    text-align: center;
+}
+
+.capture-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--color-white);
+    padding: 2.5rem 3rem;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group:last-of-type {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--form-border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input::placeholder,
+.form-group select {
+    color: #999;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
+}
+
+.form-submit-button {
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+/* --- Rodapé --- */
+footer {
+    background: var(--color-dark-bg);
+    color: var(--text-light-1);
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.footer-section h3 {
+    color: var(--color-primary-light);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-section p {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-light-2);
+}
+
+.footer-section a {
+    color: var(--text-light-1);
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: var(--color-primary-light);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #444;
+    color: var(--text-light-2);
+    font-size: 0.9rem;
+}
+
+.footer-bottom a {
+    color: var(--text-light-1);
+    font-weight: bold;
+}
+
+/* --- Banner de Contagem --- */
+.countdown-banner.sticky {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+    text-align: center;
+    padding: 1rem 0; /* Aumentado */
+    font-size: 1rem;
+    font-weight: 500;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.banner-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.countdown-banner p {
+    margin: 0;
+}
+
+.banner-chevrons {
+    color: var(--color-primary-light);
+    font-weight: 800;
+    margin: 0 0.5rem;
+    font-size: 1.5rem; /* Aumentado */
+    display: inline-block;
+    animation: bounce 1.5s infinite; /* Animação adicionada */
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(0);
+    }
+    40% {
+        transform: translateX(-10px);
+    }
+    60% {
+        transform: translateX(-5px);
+    }
+}
+
+
+.cta-button-banner {
+    background: var(--color-white);
+    color: var(--color-primary-dark);
+    padding: 8px 22px; /* Aumentado */
+    border-radius: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem; /* Aumentado */
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.cta-button-banner:hover {
+    transform: scale(1.05);
+    color: var(--color-primary-dark);
+}
+
+/* --- Estilos do Header REMOVIDO --- */
+/* .main-header { ... } */
+
+
+/* --- Media Queries para Responsividade --- */
+
+@media (max-width: 992px) {
+    .hero-content-refactored h1 {
+        font-size: 3rem;
+    }
+    .hero-content-refactored h1 span {
+        font-size: 4rem;
+    }
+    .raza-lenses-container {
+        grid-template-columns: repeat(2, 1fr); /* Mantém 2 colunas em tablets */
+    }
+    .form-bg-left, .form-bg-right {
+        display: none; /* Esconde as imagens de fundo em ecrãs menores */
+    }
+    .form-content-wrapper {
+        padding: 4rem 0; /* Remove padding lateral em ecrãs menores */
+    }
+}
+
+
+@media (max-width: 768px) {
+    h1, h2, .section-title {
+        font-size: 1.8rem;
+    }
+
+    body {
+        padding-top: 0; /* Remove padding no mobile, o banner será static */
+    }
+    .countdown-banner.sticky {
+        position: static; /* Banner deixa de ser fixo no mobile */
+        padding: 0.8rem 10px;
+    }
+    .banner-content {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .cta-button-banner {
+        width: 90%;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+    }
+
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-logo-container {
+        top: 20px;
+    }
+    
+    .logo-hero {
+        height: 35px;
+    }
+
+    .hero-content-refactored h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-content-refactored h1 span {
+        font-size: 3rem;
+    }
+    
+    .hero-benefits {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .raza-lenses-container {
+        grid-template-columns: 1fr; /* 1 coluna no celular */
+    }
+
+    .social-proof-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .store-thumbnail {
+       width: calc(50% - 0.5rem); /* 2 thumbnails no mobile */
+    }
+
+    .capture-form {
+        padding: 2rem 1.5rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-bottom {
+        font-size: 0.85rem;
+    }
+}
+
+/* --- Seção Marcas Carousel --- */
+.brands-section {
+    padding: 3rem 0;
+    background-color: var(--color-white);
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.brands-section .section-title {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2.2rem;
+}
+
+.brands-carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.brands-carousel-track {
+    display: flex;
+    width: calc(180px * 16); /* Aumentado para 8 marcas x 2 */
+    animation: scroll 40s linear infinite;
+}
+
+.brands-carousel-container:hover .brands-carousel-track {
+    animation-play-state: paused;
+}
+
+.brand-logo {
+    flex-shrink: 0;
+    width: 180px;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px; /* Altura adicionada para consistência */
+}
+
+.brand-logo img {
+    max-width: 130px;
+    max-height: 50px; /* Altura máxima para os logos */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: filter 0.3s, opacity 0.3s, transform 0.3s;
+}
+
+.brand-logo:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-180px * 8)); /* Scroll por 8 logos */
+    }
+}
+
+/* --- Seção Como Funciona --- */
+.how-it-works-section {
+    padding: 4rem 0;
+    background-color: var(--form-bg);
+}
+
+.how-it-works-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.how-it-works-text .section-title {
+    text-align: left;
+}
+
+.how-it-works-text .section-subtitle {
+    text-align: left;
+    margin-left: 0;
+    max-width: 100%;
+}
+
+.steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.steps-list li {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.steps-list li span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 50%;
+    font-weight: bold;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.how-it-works-text .cta-button {
+    font-size: 1rem;
+}
+
+.how-it-works-animation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.how-it-works-animation img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+    .how-it-works-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .how-it-works-text .section-title,
+    .how-it-works-text .section-subtitle {
+        text-align: center;
+    }
+    .steps-list li {
+        justify-content: center;
+    }
+    .how-it-works-animation {
+        margin-top: 2rem;
+    }
+}
+
