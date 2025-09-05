@@ -489,15 +489,12 @@ h1, h2, h3 {
     padding: 4rem 2rem; /* Adicionado o padding vertical aqui */
     max-width: 700px;
     margin: 0 auto;
+    display: flow-root; /* Garante que as margens dos filhos não "vazem" */
 }
 
 .capture-form-section h2,
 .capture-form-section .section-subtitle {
     text-align: center;
-}
-
-.capture-form-section h2 {
-    margin-top: 0;
 }
 
 .capture-form {
