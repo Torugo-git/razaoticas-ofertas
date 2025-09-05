@@ -496,6 +496,10 @@ h1, h2, h3 {
     text-align: center;
 }
 
+.capture-form-section h2 {
+    margin-top: 0;
+}
+
 .capture-form {
     max-width: 600px;
     margin: 0 auto;
