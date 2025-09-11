@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gestão - Leads</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <img src="images/raza_logo.png" alt="Raza Óticas" class="logo">
+            <div class="user-info">
+                <span id="user-email"></span>
+                <button id="logout-button" class="btn btn-logout">Sair</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+
+            <div class="kpi-container">
+                <div class="kpi-card">
+                    <h2 id="kpi-total-leads">--</h2>
+                    <p>Total de Leads</p>
+                </div>
+                <div class="kpi-card">
+                    <h2 id="kpi-leads-today">--</h2>
+                    <p>Leads Hoje</p>
+                </div>
+                <div class="kpi-card">
+                    <h2 id="kpi-best-unit">--</h2>
+                    <p>Melhor Unidade</p>
+                </div>
+                <div class="kpi-card">
+                    <h2 id="kpi-best-campaign">--</h2>
+                    <p>Melhor Campanha</p>
+                </div>
+            </div>
+
+            <div class="filters-container">
+                <form id="filters-form">
+                    <div class="filter-group">
+                        <label for="start-date">De:</label>
+                        <input type="date" id="start-date" name="start-date">
+                    </div>
+                    <div class="filter-group">
+                        <label for="end-date">Até:</label>
+                        <input type="date" id="end-date" name="end-date">
+                    </div>
+                    <div class="filter-group">
+                        <label for="unit-filter">Unidade:</label>
+                        <select id="unit-filter" name="unit-filter">
+                            <option value="">Todas</option>
+                            <option value="rio-das-ostras-rj">Rio das Ostras - RJ</option>
+                            <option value="laranjeiras-es">Laranjeiras - ES</option>
+                            <option value="campo-grande-es">Campo Grande - ES</option>
+                            <option value="cabo-frio-rj">Cabo Frio - RJ</option>
+                            <option value="macae-rj">Macaé - RJ</option>
+                            <option value="belo-horizonte-mg">Belo Horizonte - MG</option>
+                            <option value="juiz-de-fora-mg">Juiz de Fora - MG</option>
+                        </select>
+                    </div>
+                    <div class="filter-buttons">
+                        <button type="reset" id="clear-filters" class="btn btn-secondary">Limpar</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="actions-container">
+                <div class="search-group">
+                    <input type="search" id="search-input" placeholder="Pesquisar por nome, email ou telefone...">
+                </div>
+                <button id="export-csv" class="btn btn-secondary">Exportar CSV</button>
+            </div>
+
+            <h1>Leads Capturados</h1>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th data-sort="dataCadastro" class="sortable">Data de Cadastro <span class="sort-arrow"></span></th>
+                            <th data-sort="nome" class="sortable">Nome <span class="sort-arrow"></span></th>
+                            <th>Telefone</th>
+                            <th>Email</th>
+                            <th data-sort="unidade" class="sortable">Unidade <span class="sort-arrow"></span></th>
+                            <th data-sort="campanha" class="sortable">Campanha (UTM) <span class="sort-arrow"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="leads-table-body">
+                        </tbody>
+                </table>
+            </div>
+            
+            <div class="pagination-container">
+                <button id="prev-page" class="btn btn-secondary">Anterior</button>
+                <span id="page-info"></span>
+                <button id="next-page" class="btn btn-secondary">Próxima</button>
+            </div>
+
+            <div id="loading-spinner" class="spinner-container">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    
+    <script src="firebase-config.js"></script>
+    <script src="auth.js"></script>
+    <script src="painel.js"></script>
+</body>
+</html>

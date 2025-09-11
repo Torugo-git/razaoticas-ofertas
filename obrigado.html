@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obrigado! - Raza Óticas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/legal.css">
+</head>
+<body class="obrigado-page">
+
+    <div class="thank-you-container">
+        <header class="thank-you-header">
+            <img src="assets/images/raza_logo.png" alt="Raza Óticas Logo" class="thank-you-logo">
+            <div class="success-icon">✓</div>
+            <h1>Parabéns! Seu cadastro foi concluído.</h1>
+            <p>Veja como funcionará a partir de agora:</p>
+        </header>
+
+        <main class="thank-you-main">
+            <div class="process-steps-container">
+                <div class="step-card">
+                    <!-- ESPAÇO PARA SEU ÍCONE -->
+                    <img src="assets/icons/icon-contato.png" alt="Ícone de Contato via WhatsApp" class="step-image">
+                    <h3>1. Contato</h3>
+                    <p>Nossa equipe vai te chamar no seu WhatsApp para confirmar seus dados.</p>
+                </div>
+                <div class="step-arrow">›</div>
+                <div class="step-card">
+                    <!-- ESPAÇO PARA SEU ÍCONE -->
+                    <img src="assets/icons/icon-voucher.png" alt="Ícone de Recebimento de Voucher" class="step-image">
+                    <h3>2. Recebimento</h3>
+                    <p>Após a confirmação, você recebe o voucher digital com as instruções.</p>
+                </div>
+                <div class="step-arrow">›</div>
+                <div class="step-card">
+                    <!-- ESPAÇO PARA SEU ÍCONE -->
+                    <img src="assets/icons/icon-loja.png" alt="Ícone de Utilização na Loja" class="step-image">
+                    <h3>3. Utilização</h3>
+                    <p>Com o voucher em mãos, dirija-se à sua unidade de preferência para aproveitar!</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                Fique tranquilo(a), você não precisa fazer mais nada agora. Entraremos em contato.
+            </div>
+        </main>
+
+        <footer class="thank-you-footer">
+            <p>Seu voucher será válido por:</p>
+            <div id="countdown-container">
+                <div class="time-box"><span id="days">0</span><span>Dias</span></div>
+                <div class="time-box"><span id="hours">0</span><span>Horas</span></div>
+                <div class="time-box"><span id="minutes">0</span><span>Minutos</span></div>
+                <div class="time-box"><span id="seconds">0</span><span>Segundos</span></div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const countdownDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000); // 3 dias a partir de agora
+
+            const countdownFunction = setInterval(() => {
+                const now = new Date().getTime();
+                const distance = countdownDate - now;
+
+                if (distance < 0) {
+                    clearInterval(countdownFunction);
+                    document.getElementById("countdown-container").innerHTML = "<p>SEU VOUCHER EXPIROU</p>";
+                    return;
+                }
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerText = String(days).padStart(2, '0');
+                document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+
