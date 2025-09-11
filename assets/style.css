@@ -1,0 +1,353 @@
+:root {
+    --color-primary: #ff8c00;
+    --color-primary-dark: #e67e00;
+    --color-dark-bg: #222222;
+    --color-light-bg: #f8f9fa;
+    --color-white: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-light-1: #cccccc;
+    --border-color: #dee2e6;
+    --border-color-dark: #444444;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --danger-color: #dc3545;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: var(--color-light-bg);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- Estilos da Página de Login (TEMA ESCURO APLICADO) --- */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    background-color: var(--color-light-bg); /* Fundo da página claro */
+}
+
+.login-box {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    background-color: var(--color-dark-bg); /* FUNDO PRETO APLICADO */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.logo {
+    max-width: 150px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.login-box h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    color: var(--text-light-1); /* Cor de texto clara */
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-light-1); /* Cor de texto clara */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color-dark); /* Borda mais escura */
+    background-color: #333; /* Fundo do input escuro */
+    color: var(--color-white); /* Texto do input branco */
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
+}
+
+.btn {
+    display: inline-block;
+    width: 100%;
+    padding: 0.8rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.error-message {
+    color: var(--danger-color);
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    min-height: 1.2em;
+}
+
+/* --- Estilos do Painel --- */
+.header {
+    background-color: var(--color-dark-bg); /* FUNDO PRETO APLICADO */
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    margin-bottom: 2rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header .logo {
+    max-width: 120px;
+    margin: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#user-email {
+    color: var(--text-light-1); /* Cor de texto clara */
+    font-weight: 500;
+}
+
+.btn-logout {
+    width: auto;
+    padding: 0.5rem 1rem;
+    background-color: var(--danger-color);
+}
+
+.main-content h1 {
+    margin-bottom: 1.5rem;
+}
+
+/* Container das Métricas (KPIs) */
+.kpi-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Ajuste para 4 colunas */
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.kpi-card {
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    text-align: center;
+}
+
+.kpi-card h2 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin: 0 0 0.5rem 0;
+}
+
+.kpi-card p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Container dos Filtros */
+.filters-container {
+    background-color: var(--color-white);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    margin-bottom: 1.5rem; /* Margem ajustada */
+}
+
+#filters-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1.5rem;
+}
+
+.filter-group {
+    flex-grow: 1;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.filter-group input[type="date"],
+.filter-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filter-buttons .btn {
+    width: auto;
+    padding: 0.75rem 1.5rem;
+}
+
+.btn-secondary {
+    background-color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/* --- NOVOS ESTILOS FINAIS --- */
+/* Ações da Tabela (Pesquisa e Exportar) */
+.actions-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.search-group {
+    flex-grow: 1;
+}
+#search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+}
+#export-csv {
+    width: auto;
+    padding: 0.75rem 1.5rem;
+}
+
+/* Tabela e Ordenação */
+.table-wrapper {
+    overflow-x: auto;
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+thead th {
+    background-color: var(--color-light-bg);
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+th.sortable {
+    cursor: pointer;
+    position: relative;
+    -webkit-user-select: none;
+    user-select: none;
+}
+th.sortable .sort-arrow {
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+    color: #ccc;
+}
+th.sortable.asc .sort-arrow {
+    color: var(--text-primary);
+}
+th.sortable.desc .sort-arrow {
+    color: var(--text-primary);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+/* Paginação */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.pagination-container button {
+    width: auto;
+    padding: 0.5rem 1.2rem;
+}
+.pagination-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+#page-info {
+    font-weight: 500;
+}
+
+/* Spinner de Carregamento */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+}
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--color-primary);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

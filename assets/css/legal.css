@@ -1,0 +1,352 @@
+:root {
+    --color-primary: #ff8c00;          /* Laranja principal da Raza Óticas */
+    --color-primary-dark: #e67e00;     /* Laranja mais escuro para hover */
+    --color-accent: #ff8c00;           /* Acordeão usa o laranja principal */
+    --text-primary-light: #f1f1f1;      /* Texto claro (para fundos escuros) */
+    --text-primary-dark: #333333;       /* Texto escuro (para fundos claros) */
+    --text-secondary-light: #aaaaaa;    /* Texto secundário claro */
+    --text-secondary-dark: #666666;     /* Texto secundário escuro */
+    --color-white: #ffffff;
+    --page-bg: #e9e9e9;                /* Fundo cinza claro para a página */
+    --container-dark-bg: #1a1a1a;       /* Fundo escuro para o container */
+    --border-color: #444444;            /* Borda mais escura para o container */
+    --border-color-light: #eeeeee;     /* Borda clara */
+    --accordion-content-bg: #2b2b2b;   /* Fundo cinza escuro para o conteúdo do acordeão */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.7;
+    background-color: var(--page-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+/* --- ESTILOS PARA PÁGINAS LEGAIS (REGULAMENTO, PRIVACIDADE) --- */
+.container {
+    max-width: 800px;
+    width: 100%;
+    background-color: var(--container-dark-bg);
+    padding: 2rem 2.5rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.container header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.container .logo {
+    max-width: 150px;
+    margin: 0 auto 1rem;
+}
+
+.container h1 {
+    color: var(--text-primary-light);
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.container header .subtitle {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--text-secondary-light);
+}
+
+.thank-you-message {
+    color: var(--text-secondary-light);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto 1rem auto;
+}
+
+.accordion-container {
+    width: 100%;
+    text-align: left;
+}
+
+.accordion-item {
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: background-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-header:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.accordion-header::after {
+    content: '▼';
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active::after {
+    transform: rotate(180deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+    background-color: var(--accordion-content-bg);
+    padding: 0 1.5rem;
+}
+
+.accordion-content p {
+    padding: 1rem 0;
+    margin: 0;
+    color: var(--text-primary-light);
+    font-weight: 500;
+}
+
+.back-button-container {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.back-button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    color: var(--color-white);
+}
+
+.legal-content {
+    text-align: left;
+    color: var(--text-secondary-light);
+}
+.legal-content h2 {
+    color: var(--text-primary-light);
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+.legal-content p, 
+.legal-content li {
+    color: var(--text-secondary-light);
+    margin-bottom: 1rem;
+}
+.legal-content ul {
+    padding-left: 20px;
+}
+.legal-content a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+/* --- INÍCIO: ESTILOS ATUALIZADOS PARA PÁGINA DE OBRIGADO (DESIGN INVERTIDO) --- */
+body.obrigado-page {
+    background-color: var(--page-bg);
+    padding: 2rem 1rem;
+    display: block; /* Alterado para block para centralizar via margin */
+}
+
+.thank-you-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.thank-you-header {
+    background-color: var(--container-dark-bg); /* CABEÇALHO PRETO */
+    color: var(--color-white);
+    padding: 2.5rem 2rem;
+    text-align: center;
+}
+
+.thank-you-logo {
+    max-width: 120px;
+    margin: 0 auto 1.5rem;
+}
+
+.success-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 50px;
+    margin: 0 auto 1.5rem;
+}
+
+.thank-you-header h1 {
+    font-size: 2rem;
+    margin: 0 0 0.5rem 0;
+    color: var(--color-white);
+}
+
+.thank-you-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.thank-you-main {
+    background-color: var(--color-white); /* CONTEÚDO BRANCO */
+    padding: 3rem 2rem;
+}
+
+.process-steps-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.step-card {
+    background-color: #f9f9f9; /* Fundo do card cinza claro */
+    border: 1px solid var(--border-color-light);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-image {
+    height: 48px;
+    width: 48px;
+    margin-bottom: 1rem;
+}
+
+.step-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary-dark); /* Texto escuro */
+}
+
+.step-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary-dark); /* Texto secundário escuro */
+    line-height: 1.5;
+}
+
+.step-arrow {
+    font-size: 2rem;
+    color: #ddd;
+    align-self: center;
+}
+
+.info-box {
+    background-color: var(--page-bg);
+    color: var(--text-secondary-dark);
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9rem;
+    max-width: 600px;
+    margin: 2rem auto 0;
+    border: 1px solid var(--border-color-light);
+}
+
+.thank-you-footer {
+    background-color: var(--color-primary); /* RODAPÉ LARANJA */
+    color: var(--color-white);
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+.thank-you-footer p {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+#countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.time-box {
+    background-color: rgba(0,0,0,0.2);
+    padding: 0.8rem;
+    border-radius: 5px;
+    min-width: 70px;
+}
+
+.time-box span {
+    display: block;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.time-box span:last-child {
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+@media (max-width: 850px) {
+    .step-arrow { display: none; }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+    .container, .thank-you-container {
+        padding: 1.5rem;
+    }
+    h1, .thank-you-header h1 {
+        font-size: 1.8rem;
+    }
+}
+

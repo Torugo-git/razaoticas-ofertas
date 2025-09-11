@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulamento das Promoções - Raza Óticas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/legal.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="assets/images/raza_logo.png" alt="Raza Óticas Logo" class="logo">
+            <h1>Regulamento de Nossas Ofertas</h1>
+            <p class="subtitle">Não acumulativas com outras promoções.</p>
+        </header>
+        
+        <main class="accordion-container">
+            <div class="accordion-item">
+                <button class="accordion-header">Toda a loja com descontos de até 70%</button>
+                <div class="accordion-content">
+                    <p>3 graus esféricos e 2 graus cilíndricos, somente para visão simples. Lentes CR - 39 (acrílico).</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">Óculos prontos em até 1h</button>
+                <div class="accordion-content">
+                    <p>3 graus esféricos e 2 graus cilíndricos, somente para visão simples. Lentes CR - 39 (acrílico).</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">Armações de grau exclusivas por apenas R$ 49,90!</button>
+                <div class="accordion-content">
+                    <p>Promoção válida para armações de grau selecionadas e devidamente identificadas nas lojas. O valor de R$49,90 refere-se exclusivamente à armação e não inclui as lentes de grau. A garantia de 1 ano cobre defeitos de fabricação. Promoção não acumulativa e válida enquanto durar o stock.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">Par de óculos de grau por apenas 10x de R$ 29,90!</button>
+                <div class="accordion-content">
+                    <p>3 graus esféricos e 2 graus cilíndricos, somente para visão simples. Lentes CR - 39 (acrílico).</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">Óculos de grau completo + Antirreflexo por apenas 10x R$ 19,90!</button>
+                <div class="accordion-content">
+                    <p>3 graus esféricos e 2 graus cilíndricos, somente para visão simples. Lentes CR - 39 (acrílico).</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">Seu óculos antigo vale dinheiro</button>
+                <div class="accordion-content">
+                    <p>Os valores de desconto são uma simulação e podem variar de acordo com a avaliação do seu óculos antigo. A avaliação é feita na hora, sem complicação!</p>
+                </div>
+            </div>
+
+            <div class="back-button-container">
+                <a href="promo-armacoes49.html" id="back-link" class="back-button">Voltar à promoção</a>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/js/script-legal.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          const urlParams = new URLSearchParams(window.location.search);
+          const returnPage = urlParams.get('from');
+          const backLink = document.getElementById('back-link');
+
+          // --- CORREÇÃO APLICADA AQUI ---
+          // Adicionamos a nova página 'promo-armacoes49.html' à lista
+          const allowedPages = ['promo-2por299.html', 'promo70.html', 'promo-oculos-antigo.html', 'promo-1hora.html', 'promo-antirreflexo.html', 'promo-armacoes49.html'];
+
+          if (backLink && returnPage && allowedPages.includes(returnPage)) {
+            backLink.href = returnPage;
+          }
+        } catch (e) {
+          console.error("Erro ao configurar o link de 'Voltar':", e);
+        }
+      });
+    </script>
+</body>
+</html>
+
