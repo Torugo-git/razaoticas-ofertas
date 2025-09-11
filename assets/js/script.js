@@ -106,75 +106,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- INÍCIO: LÓGICA DE ENVIO DO FORMULÁRIO PARA O FIREBASE ---
-    try {
-        const firebaseConfig = {
-            apiKey: "AIzaSyAEzMahSewwMBFXKrPjYIJqW7eHDlfiB8U",
-            authDomain: "raza-oticas-landing-pages.firebaseapp.com",
-            projectId: "raza-oticas-landing-pages",
-            storageBucket: "raza-oticas-landing-pages.appspot.com",
-            messagingSenderId: "248156217813",
-            appId: "1:248156217813:web:409956bfa071bdcc1c9d5c",
-            measurementId: "G-VJD5D9KNQX"
-        };
+    // --- INÍCIO: LÓGICA DE ENVIO DO FORMULÁRIO PARA A CLOUD FUNCTION COM RECAPTCHA ---
+    const leadForm = document.querySelector('.capture-form');
+    if (leadForm) {
+        leadForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const submitButton = form.querySelector('.form-submit-button');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'ENVIANDO...';
 
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LfqMsYrAAAAAOXpg4f5HpKyW71cRDhqfeAoRt2J', {action: 'submit'}).then(async function(token) {
 
-        const leadForm = document.querySelector('.capture-form');
-        
-        if (leadForm) {
-            leadForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const path = window.location.pathname;
+                    const pageFileName = path.substring(path.lastIndexOf('/') + 1);
+                    const campaignFromUrl = pageFileName.replace('.html', '');
+                    const defaultCampaign = campaignFromUrl || 'site-principal';
 
-                const submitButton = leadForm.querySelector('.form-submit-button');
-                submitButton.disabled = true;
-                submitButton.textContent = 'ENVIANDO...';
+                    const leadOrigem = {
+                        campaign: urlParams.get('utm_campaign') || defaultCampaign,
+                        source: urlParams.get('utm_source') || 'direto',
+                        medium: urlParams.get('utm_medium') || 'nenhum',
+                        content: urlParams.get('utm_content') || 'nao-aplicavel'
+                    };
 
-                // --- INÍCIO DA LÓGICA CORRIGIDA ---
-                const urlParams = new URLSearchParams(window.location.search);
-                
-                // Pega o nome do arquivo da URL (ex: "promo-70off.html")
-                const path = window.location.pathname;
-                const pageFileName = path.substring(path.lastIndexOf('/') + 1);
-                
-                // Remove a extensão ".html" e define como campanha padrão
-                const campaignFromUrl = pageFileName.replace('.html', '');
-                
-                // Usa o nome da página como padrão, ou um valor genérico se estiver na raiz
-                const defaultCampaign = campaignFromUrl || 'site-principal';
+                    const leadData = {
+                        unidade: form.querySelector('#unit').value,
+                        nome: form.querySelector('#name').value,
+                        telefone: form.querySelector('#phone').value,
+                        email: form.querySelector('#email').value,
+                        origem: leadOrigem,
+                        recaptchaToken: token
+                    };
 
-                const leadOrigem = {
-                    campaign: urlParams.get('utm_campaign') || defaultCampaign, // USA O VALOR DINÂMICO
-                    source: urlParams.get('utm_source') || 'direto', // Origem (facebook, google)
-                    medium: urlParams.get('utm_medium') || 'nenhum', // Mídia (cpc, social)
-                    content: urlParams.get('utm_content') || 'nao-aplicavel' // Anúncio específico (video, imagem_azul)
-                };
-                // --- FIM DA LÓGICA CORRIGIDA ---
+                    try {
+                        const response = await fetch('https://us-central1-raza-oticas-landing-pages.cloudfunctions.net/submitLead', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(leadData)
+                        });
 
-                const leadData = {
-                    unidade: leadForm.querySelector('#unit').value,
-                    nome: leadForm.querySelector('#name').value,
-                    telefone: leadForm.querySelector('#phone').value,
-                    email: leadForm.querySelector('#email').value,
-                    origem: leadOrigem,
-                    dataCadastro: new Date()
-                };
+                        if (!response.ok) {
+                            const errorResult = await response.json();
+                            throw new Error(errorResult.message || 'Falha ao enviar dados.');
+                        }
 
-                try {
-                    await db.collection('leads').add(leadData);
-                    window.location.href = 'obrigado.html';
-                } catch (error) {
-                    console.error("Erro ao salvar os dados no Firestore:", error);
-                    alert('Houve um erro ao enviar seu cadastro. Por favor, tente novamente.');
-                    submitButton.disabled = false;
-                    submitButton.textContent = 'GARANTIR MEU VOUCHER!';
-                }
+                        window.location.href = 'obrigado.html';
+
+                    } catch (error) {
+                        console.error("Erro ao enviar o formulário para a Cloud Function:", error);
+                        alert(error.message || 'Houve um erro ao enviar seu cadastro. Por favor, tente novamente.');
+                        submitButton.disabled = false;
+                        submitButton.textContent = originalButtonText;
+                    }
+                });
             });
-        }
-    } catch (error) {
-        console.error("Erro ao inicializar o Firebase ou configurar o formulário:", error);
+        });
     }
-    // --- FIM: LÓGICA DE ENVIO DO FORMULÁRIO PARA O FIREBASE ---
+    // --- FIM: LÓGICA DE ENVIO DO FORMULÁRIO ---
 
 });
