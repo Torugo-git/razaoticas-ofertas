@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * Renderiza uma página específica de leads na tabela.
      */
     function renderTablePage() {
-        leadsTableBody.innerHTML = '';
+        leadsTableBody.innerHTML = ''; // Clear existing rows safely
         const startIndex = (currentPage - 1) * LEADS_PER_PAGE;
         const endIndex = startIndex + LEADS_PER_PAGE;
         const pageLeads = displayedLeads.slice(startIndex, endIndex);
@@ -72,16 +72,23 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // Helper function to create table cells safely
+        const createCell = (text) => {
+            const td = document.createElement('td');
+            td.textContent = text;
+            return td;
+        };
+
         pageLeads.forEach(lead => {
             const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${formatTimestamp(lead.dataCadastro)}</td>
-                <td>${lead.nome || ''}</td>
-                <td>${lead.telefone || ''}</td>
-                <td>${lead.email || ''}</td>
-                <td>${formatUnitName(lead.unidade)}</td>
-                <td>${lead.origem ? (lead.origem.campaign || 'N/A') : 'N/A'}</td>
-            `;
+
+            tr.appendChild(createCell(formatTimestamp(lead.dataCadastro)));
+            tr.appendChild(createCell(lead.nome || ''));
+            tr.appendChild(createCell(lead.telefone || ''));
+            tr.appendChild(createCell(lead.email || ''));
+            tr.appendChild(createCell(formatUnitName(lead.unidade)));
+            tr.appendChild(createCell(lead.origem ? (lead.origem.campaign || 'N/A') : 'N/A'));
+
             leadsTableBody.appendChild(tr);
         });
     }
