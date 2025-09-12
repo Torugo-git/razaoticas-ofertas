@@ -1,0 +1,14 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Regra para a coleção 'leads'
+    match /leads/{leadId} {
+      // Apenas usuários autenticados (do painel) podem LER os dados.
+      allow read: if request.auth != null;
+
+      // NINGUÉM pode escrever (criar, atualizar, apagar) diretamente no banco de dados.
+      // Isso força que todas as modificações passem pela Cloud Function segura.
+      allow write: if false;
+    }
+  }
+}
