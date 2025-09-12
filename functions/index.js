@@ -37,12 +37,40 @@ exports.submitLead = functions.region('us-central1').https.onRequest((req, res) 
         return res.status(400).json({ message: "Falha na verificação de segurança. Tente novamente." });
       }
 
-      // 2. SE A VERIFICAÇÃO PASSAR, SALVAR OS DADOS NO FIRESTORE
+      // 2. SANITIZAR OS DADOS DO LEAD ANTES DE SALVAR
+      const escapeHtml = (unsafe) => {
+        if (typeof unsafe !== 'string') return unsafe;
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+      };
+
+      const sanitizeObject = (obj) => {
+        const sanitized = {};
+        for (const key in obj) {
+            const value = obj[key];
+            if (typeof value === 'string') {
+                sanitized[key] = escapeHtml(value);
+            } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+                sanitized[key] = sanitizeObject(value); // Sanitize nested objects
+            } else {
+                sanitized[key] = value; // Keep non-string, non-object values as is
+            }
+        }
+        return sanitized;
+      };
+
+      const sanitizedLeadData = sanitizeObject(leadDataFromClient);
+
+      // 3. SE A VERIFICAÇÃO PASSAR, SALVAR OS DADOS NO FIRESTORE
       const db = admin.firestore();
 
       // Adiciona a data do cadastro usando o timestamp do servidor
       const finalLeadData = {
-          ...leadDataFromClient,
+          ...sanitizedLeadData,
           dataCadastro: admin.firestore.FieldValue.serverTimestamp()
       };
 
