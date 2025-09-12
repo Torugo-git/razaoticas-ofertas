@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://of.razaoticas.com/sitemap.xml
