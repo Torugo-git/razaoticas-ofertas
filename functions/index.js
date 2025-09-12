@@ -6,8 +6,8 @@ const cors = require("cors")({origin: true});
 // Inicializa o Firebase Admin SDK
 admin.initializeApp();
 
-// É uma boa prática armazenar chaves secretas em variáveis de ambiente.
-const RECAPTCHA_SECRET_KEY = "6LfqMsYrAAAAAGy9bj8IorX0n4laqqXsR-KmgVzX";
+// A chave secreta agora é lida da configuração de ambiente segura do Firebase.
+const RECAPTCHA_SECRET_KEY = functions.config().recaptcha.secret;
 
 exports.submitLead = functions.region('us-central1').https.onRequest((req, res) => {
   // Envolve a função com o middleware CORS para permitir requisições do seu site
