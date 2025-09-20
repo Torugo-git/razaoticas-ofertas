@@ -23,7 +23,7 @@ exports.submitLead = functions.region('us-central1').https.onRequest((req, res) 
 
       // 1. VERIFICAR O TOKEN RECAPTCHA
       if (!recaptchaToken) {
-        console.log("Token do reCAPTCHA ausente.");
+        console.error("Token do reCAPTCHA ausente.");
         return res.status(400).json({message: "Token do reCAPTCHA é obrigatório."});
       }
 
@@ -33,7 +33,8 @@ exports.submitLead = functions.region('us-central1').https.onRequest((req, res) 
 
       // Verifica se o reCAPTCHA foi validado e se a pontuação é aceitável
       if (!success || score < 0.5) {
-        console.log("Falha na verificação do reCAPTCHA", recaptchaResponse.data);
+        // Alterado para console.error para maior visibilidade nos logs
+        console.error("Falha na verificação do reCAPTCHA. A resposta do Google foi:", recaptchaResponse.data);
         return res.status(400).json({ message: "Falha na verificação de segurança. Tente novamente." });
       }
 
@@ -41,11 +42,11 @@ exports.submitLead = functions.region('us-central1').https.onRequest((req, res) 
       const escapeHtml = (unsafe) => {
         if (typeof unsafe !== 'string') return unsafe;
         return unsafe
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
       };
 
       const sanitizeObject = (obj) => {
@@ -53,11 +54,11 @@ exports.submitLead = functions.region('us-central1').https.onRequest((req, res) 
         for (const key in obj) {
             const value = obj[key];
             if (typeof value === 'string') {
-                sanitized[key] = escapeHtml(value);
+              sanitized[key] = escapeHtml(value);
             } else if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-                sanitized[key] = sanitizeObject(value); // Sanitize nested objects
+              sanitized[key] = sanitizeObject(value); // Sanitize nested objects
             } else {
-                sanitized[key] = value; // Keep non-string, non-object values as is
+              sanitized[key] = value; // Keep non-string, non-object values as is
             }
         }
         return sanitized;
@@ -80,7 +81,7 @@ exports.submitLead = functions.region('us-central1').https.onRequest((req, res) 
       res.status(200).json({ message: "Cadastro realizado com sucesso!" });
 
     } catch (error) {
-      console.error("Erro interno no servidor:", error);
+      console.error("Erro interno no servidor ao processar o lead:", error);
       res.status(500).json({ message: "Ocorreu um erro inesperado. Por favor, tente mais tarde." });
     }
   });
