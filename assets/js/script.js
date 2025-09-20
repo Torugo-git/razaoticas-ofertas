@@ -118,7 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.textContent = 'ENVIANDO...';
 
             grecaptcha.ready(function() {
-                grecaptcha.execute('6LfqMsYrAAAAAOXpg4f5HpKyW71cRDhqfeAoRt2J', {action: 'submit'}).then(async function(token) {
+                // NOVA CHAVE DE SITE INSERIDA AQUI
+                grecaptcha.execute('6LcFeM8rAAAAAG_yvOemcZ1ivd14z9svaddS0Bk1', {action: 'submit'}).then(async function(token) {
 
                     const urlParams = new URLSearchParams(window.location.search);
                     const path = window.location.pathname;
