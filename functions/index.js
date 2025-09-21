@@ -6,10 +6,15 @@ const cors = require("cors")({origin: true});
 // Inicializa o Firebase Admin SDK
 admin.initializeApp();
 
-// A chave secreta agora é lida da configuração de ambiente segura do Firebase.
-const RECAPTCHA_SECRET_KEY = functions.config().recaptcha.secret;
+// Define o segredo usando o novo sistema. O valor virá do ficheiro .env ou do Secret Manager.
+const RECAPTCHA_SECRET_KEY = functions.config().recaptcha 
+    ? functions.config().recaptcha.secret 
+    : process.env.RECAPTCHA_SECRET_KEY;
 
-exports.submitLead = functions.region('us-central1').https.onRequest((req, res) => {
+exports.submitLead = functions.runWith({ secrets: ["RECAPTCHA_SECRET_KEY"] })
+  .region('us-central1')
+  .https.onRequest((req, res) => {
+  
   // Envolve a função com o middleware CORS para permitir requisições do seu site
   cors(req, res, async () => {
     // Permite apenas requisições POST
@@ -27,13 +32,19 @@ exports.submitLead = functions.region('us-central1').https.onRequest((req, res) 
         return res.status(400).json({message: "Token do reCAPTCHA é obrigatório."});
       }
 
-      const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`;
+      // O valor do segredo agora é lido de process.env
+      const secretValue = process.env.RECAPTCHA_SECRET_KEY;
+      if (!secretValue) {
+          console.error("A Chave Secreta do reCAPTCHA não está configurada no ambiente da função.");
+          throw new Error("Configuração do servidor incompleta.");
+      }
+
+      const verificationURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretValue}&response=${recaptchaToken}`;
       const recaptchaResponse = await axios.post(verificationURL);
       const { success, score } = recaptchaResponse.data;
 
       // Verifica se o reCAPTCHA foi validado e se a pontuação é aceitável
       if (!success || score < 0.5) {
-        // Alterado para console.error para maior visibilidade nos logs
         console.error("Falha na verificação do reCAPTCHA. A resposta do Google foi:", recaptchaResponse.data);
         return res.status(400).json({ message: "Falha na verificação de segurança. Tente novamente." });
       }
@@ -86,3 +97,4 @@ exports.submitLead = functions.region('us-central1').https.onRequest((req, res) 
     }
   });
 });
+// Forçar re-implantação com as permissões corretas - 20/09/2025
